@@ -281,6 +281,123 @@
                 app:layout_constraintStart_toStartOf="@id/swGen10"
                 app:layout_constraintTop_toBottomOf="@+id/swGen10" />
 
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swGen11"
+                android:layout_width="45dp"
+                android:layout_height="30dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imgRomance" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Aventura"
+                app:layout_constraintStart_toEndOf="@+id/swGen11"
+                app:layout_constraintTop_toBottomOf="@id/imgRomance" />
+
+            <ImageView
+                android:id="@+id/imgAdventure"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/adventure"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/swGen11" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swGen12"
+                android:layout_width="45dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="80dp"
+                app:layout_constraintStart_toEndOf="@id/swGen11"
+                app:layout_constraintTop_toBottomOf="@id/imgContemporary" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="J Adultos"
+                app:layout_constraintStart_toEndOf="@+id/swGen12"
+                app:layout_constraintTop_toBottomOf="@id/imgContemporary" />
+
+            <ImageView
+                android:id="@+id/imgYoungAdult"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/youngadult"
+                app:layout_constraintStart_toStartOf="@id/swGen12"
+                app:layout_constraintTop_toBottomOf="@+id/swGen12" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swGen13"
+                android:layout_width="45dp"
+                android:layout_height="30dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imgAdventure" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Adultos"
+                app:layout_constraintStart_toEndOf="@+id/swGen13"
+                app:layout_constraintTop_toBottomOf="@id/imgAdventure" />
+
+            <ImageView
+                android:id="@+id/imgAdult"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/adult"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/swGen13" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swGen14"
+                android:layout_width="45dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="80dp"
+                app:layout_constraintStart_toEndOf="@id/swGen13"
+                app:layout_constraintTop_toBottomOf="@id/imgYoungAdult" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Filosofía"
+                app:layout_constraintStart_toEndOf="@+id/swGen14"
+                app:layout_constraintTop_toBottomOf="@id/imgYoungAdult" />
+
+            <ImageView
+                android:id="@+id/imgPhilosophy"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/philosophy"
+                app:layout_constraintStart_toStartOf="@id/swGen14"
+                app:layout_constraintTop_toBottomOf="@+id/swGen14" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swGen15"
+                android:layout_width="45dp"
+                android:layout_height="30dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imgAdult" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Sci-Fi"
+                app:layout_constraintStart_toEndOf="@+id/swGen15"
+                app:layout_constraintTop_toBottomOf="@id/imgAdult" />
+
+            <ImageView
+                android:id="@+id/imgSciFi"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/scifi"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/swGen15" />
+
+
+
+
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
