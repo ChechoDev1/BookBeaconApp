@@ -20,6 +20,7 @@ class RegisterFragment : Fragment() {
 
         val btBotonSiguiente = root1.findViewById<Button>(R.id.btBotonSiguiente)
         val imgBack = root1.findViewById<ImageButton>(R.id.imgBack)
+        val etRegisterEmail = root1.findViewById<TextView>(R.id.etRegisterEmail)
 
         imgBack.setOnClickListener {
             findNavController().navigate(RegisterFragmentDirections.actionSecondFragmentToFirstFragment())
@@ -28,6 +29,10 @@ class RegisterFragment : Fragment() {
         btBotonSiguiente.setOnClickListener {
             findNavController().navigate(RegisterFragmentDirections.actionSecondFragmentToThirdFragment())
         }
+
+        //findNavController().navigate(RegisterFragmentDirections.actionSecondFragmentToSixthFragment(
+            //correo = etRegisterEmail.text.toString()
+            //))
 
         return root1
     }

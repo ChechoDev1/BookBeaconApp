@@ -20,4 +20,5 @@
     <string name="boton_finalizar">Finalizar</string>
     <string name="finalizacion">¡Tu perfil ha sido creado!</string>
     <string name="bienvenida">Bienvenido a Book Beacon</string>
+    <string name="contrasena">Contraseña</string>
 </resources>
