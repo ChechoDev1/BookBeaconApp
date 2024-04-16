@@ -17,4 +17,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="rango_paginas">¿Cuál es tu rango de páginas preferido al leer un libro</string>
+    <string name="boton_finalizar">Finalizar</string>
+    <string name="finalizacion">¡Tu perfil ha sido creado!</string>
+    <string name="bienvenida">Bienvenido a Book Beacon</string>
 </resources>

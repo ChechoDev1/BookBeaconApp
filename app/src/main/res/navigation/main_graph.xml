@@ -54,4 +54,14 @@
             app:destination="@id/thirdFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
     </fragment>
+    <fragment
+        android:id="@+id/sixthFragment"
+        android:name="com.example.projectbookbeaconapp.RegisterFinal"
+        android:label="RegisterFragment6"
+        tools:layout="@layout/fragment_register_6" >
+        <argument
+            android:name="correo"
+            app:argType="string" />
+        <argument android:name="contraseña" />
+    </fragment>
 </navigation>

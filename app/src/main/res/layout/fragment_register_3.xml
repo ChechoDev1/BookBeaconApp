@@ -392,13 +392,7 @@
                 android:src="@drawable/scifi"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/swGen15" />
-
-
-
-
-
-
-
+            
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
