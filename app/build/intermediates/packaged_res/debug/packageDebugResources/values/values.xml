@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="blue">#008EFF</color>
+    <color name="colorAccent">#085494</color>
+    <color name="colorPrimary">#438B9B</color>
+    <color name="colorPrimaryDark">#10259C</color>
+    <color name="divider">#BDBDBD</color>
+    <color name="green">#5FF865</color>
+    <color name="icons">#212121</color>
+    <color name="primary_light">#DCEDC8</color>
+    <color name="primary_text">#212121</color>
+    <color name="red">#ff0000</color>
+    <color name="secondary_text">#757575</color>
+    <color name="white">#FFFFFFFF</color>
+    <dimen name="heigh_logo">170dp</dimen>
+    <dimen name="heigh_title">72dp</dimen>
+    <dimen name="margin_default">15dp</dimen>
+    <dimen name="text_size">14sp</dimen>
+    <dimen name="width_logo">213dp</dimen>
+    <dimen name="width_title">218dp</dimen>
+    <string name="accede">Accede!</string>
+    <string name="app_name">BookBeakon</string>
+    <string name="button_create">Crear</string>
+    <string name="button_login">Login</string>
+    <string name="button_siguiente">Siguiente</string>
+    <string name="como_quieres_acceder">¿Cómo quieres acceder</string>
+    <string name="cuentanos_un_poco_de_ti">Cuéntanos un poco de ti:</string>
+    <string name="escoge_tus_5_generos_favoritos">Escoge tus 5 generos favoritos:</string>
+    <string name="gcm_defaultSenderId" translatable="false">59555302530</string>
+    <string name="google_api_key" translatable="false">AIzaSyCeJe05diVtx1QOoX8Pyxc0svcfwavZLgI</string>
+    <string name="google_app_id" translatable="false">1:59555302530:android:1166fe0f59fba17f20b89b</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCeJe05diVtx1QOoX8Pyxc0svcfwavZLgI</string>
+    <string name="google_storage_bucket" translatable="false">bookbeacon-2024.appspot.com</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_email">correo_ejemplo@gmail.com</string>
+    <string name="hint_nombre_completo">Nombre completo</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_usuario">Username</string>
+    <string name="hint_usuario_registro">Nombre de usuario</string>
+    <string name="project_id" translatable="false">bookbeacon-2024</string>
+    <string name="rango_paginas">¿Cuál es tu rango de páginas preferido al leer un libro</string>
+    <string name="titulo1">Empecemos con lo basico</string>
+    <string name="ya_tienes_una_cuenta">¿Ya tienes una cuenta?</string>
+    <style name="Base.Theme.ProjectBookBeaconApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:textSize">16dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+    <style name="ModoRojo" parent="Base.Theme.ProjectBookBeaconApp">
+        <item name="android:background">#FFFF0000</item>
+    </style>
+    <style name="Prueba" parent="Base.Theme.ProjectBookBeaconApp">
+        <item name="android:textSize">16dp</item>
+        <item name="android:drawablePadding">12dp</item>
+    </style>
+    <style name="Prueba2" parent="Base.Theme.ProjectBookBeaconApp">
+        <item name="android:textSize">24dp</item>
+        <item name="android:drawablePadding">12dp</item>
+    </style>
+    <style name="Titulo" parent="Base.Theme.ProjectBookBeaconApp">
+        <item name="android:textSize">40dp</item>
+    </style>
+</resources>
