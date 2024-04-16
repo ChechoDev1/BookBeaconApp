@@ -13,4 +13,11 @@
     <style name="Titulo" parent="Base.Theme.ProjectBookBeaconApp">
         <item name="android:textSize">40dp</item>
     </style>
+
+    <style name="BottomNavigation">
+        <item name="android:background">@color/brandColor</item>
+        <item name="itemIconTint">@color/black</item>
+        <item name="itemTextColor">@color/black</item>
+    </style>
+
 </resources>

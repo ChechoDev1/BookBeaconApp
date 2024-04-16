@@ -40,6 +40,7 @@ android {
 dependencies {
 
     implementation(libs.firebase.auth)
+    implementation(libs.glide)
     val navVersion = "2.7.7"
 
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")

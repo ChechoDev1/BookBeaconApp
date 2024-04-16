@@ -15,9 +15,13 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_login, container, false)
-        val btBotonLogin = root.findViewById<Button>(R.id.btRegister)
-        btBotonLogin.setOnClickListener {
+        val btBotonRegister = root.findViewById<Button>(R.id.btRegister)
+        val btBotonLogin = root.findViewById<Button>(R.id.btBotonLogin)
+        btBotonRegister.setOnClickListener {
             findNavController().navigate(MainFragmentDirections.actionFirstFragmentToSecondFragment())
+        }
+        btBotonLogin.setOnClickListener{
+            findNavController().navigate(MainFragmentDirections.actionFirstFragmentToStartFragment())
         }
 
         return root

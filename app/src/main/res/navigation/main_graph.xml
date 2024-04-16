@@ -15,6 +15,9 @@
             app:destination="@id/secondFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_firstFragment_to_startFragment"
+            app:destination="@id/startFragment" />
     </fragment>
     <fragment
         android:id="@+id/secondFragment"
@@ -64,4 +67,9 @@
             app:argType="string" />
         <argument android:name="contraseña" />
     </fragment>
+    <activity
+        android:id="@+id/startFragment"
+        android:name="com.example.projectbookbeaconapp.MainActivity"
+        android:label="fragment_inicio"
+        tools:layout="@layout/fragment_inicio" />
 </navigation>
