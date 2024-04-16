@@ -3,7 +3,7 @@
     <dimen name="text_size">14sp</dimen>
     <dimen name="width_logo">213dp</dimen>
     <dimen name="heigh_logo">170dp</dimen>
+    <dimen name="margin_default">15dp</dimen>
     <dimen name="width_title">218dp</dimen>
     <dimen name="heigh_title">72dp</dimen>
-    <dimen name="margin_default">15dp</dimen>
 </resources>
