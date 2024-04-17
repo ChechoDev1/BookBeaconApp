@@ -28,9 +28,6 @@
             android:id="@+id/action_secondFragment_to_firstFragment"
             app:destination="@id/firstFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
-        <action
-            android:id="@+id/action_secondFragment_to_sixthFragment"
-            app:destination="@id/sixthFragment" />
     </fragment>
     <fragment
         android:id="@+id/thirdFragment"
