@@ -1,6 +1,7 @@
-package com.example.projectbookbeaconapp
+package com.example.projectbookbeaconapp.providers
 
 import android.content.Context
+import com.example.projectbookbeaconapp.R
 import java.io.BufferedReader
 import java.io.InputStreamReader
 

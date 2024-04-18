@@ -18,7 +18,6 @@ class RegisterFragment2 : Fragment() {
         val root = inflater.inflate(R.layout.fragment_register_2, container, false)
         val imgBack2 = root.findViewById<ImageButton>(R.id.imgBack2)
         val btBotonSiguiente2 = root.findViewById<Button>(R.id.btBotonSiguiente2)
-
         imgBack2.setOnClickListener {
             findNavController().navigate(RegisterFragment2Directions.actionThirdFragmentToSecondFragment())
         }

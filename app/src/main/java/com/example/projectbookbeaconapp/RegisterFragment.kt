@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
-import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 
 class RegisterFragment : Fragment() {
@@ -17,7 +16,6 @@ class RegisterFragment : Fragment() {
     ): View? {
 
         val root1 = inflater.inflate(R.layout.fragment_register_1, container, false)
-
         val btBotonSiguiente = root1.findViewById<Button>(R.id.btBotonSiguiente)
         val imgBack = root1.findViewById<ImageButton>(R.id.imgBack)
 

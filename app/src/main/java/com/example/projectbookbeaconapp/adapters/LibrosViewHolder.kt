@@ -1,8 +1,8 @@
-package com.example.projectbookbeaconapp.adapter
+package com.example.projectbookbeaconapp.adapters
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.projectbookbeaconapp.DatosLibros
+import com.example.projectbookbeaconapp.providers.DatosLibros
 import com.example.projectbookbeaconapp.databinding.ItemLibroBinding
 
 class LibrosViewHolder(view:View):RecyclerView.ViewHolder(view) {

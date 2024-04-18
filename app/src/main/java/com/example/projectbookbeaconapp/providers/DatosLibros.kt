@@ -1,4 +1,4 @@
-package com.example.projectbookbeaconapp
+package com.example.projectbookbeaconapp.providers
 
 data class DatosLibros (
     val nombre:String,

@@ -1,22 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".MatchFragment">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/match"
-        android:layout_width="wrap_content"
+    <!-- Contenedor de información del libro -->
+    <LinearLayout
+        android:id="@+id/containerBookInfo"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:orientation="vertical"
+        android:background="@color/brandColor"
+        android:padding="16dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:gravity="center_horizontal">
+
+        <!-- Título del libro -->
+        <TextView
+            android:id="@+id/tvBookTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/te_recomendamos"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <!-- Autor del libro -->
+        <TextView
+            android:id="@+id/tvAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Autor/es: J.R.R Tolkien" />
+
+        <!-- Calificación del libro -->
+        <TextView
+            android:id="@+id/tvRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calificación: 4.5" />
+
+        <!-- Géneros del libro -->
+        <TextView
+            android:id="@+id/tvGenres"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Géneros: " />
+
+        <!-- Fecha de publicación del libro -->
+        <TextView
+            android:id="@+id/tvPublicationDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Publicación: 25/12/2001" />
+    </LinearLayout>
+
+    <!-- Botones de acción -->
+    <LinearLayout
+        android:id="@+id/containerActions"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/match_tittle"
-        android:textSize="26sp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="35dp"
-        android:textColor="@color/black"
-        />
+        android:layout_below="@id/containerBookInfo"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:gravity="center">
 
+        <!-- Botón No me interesa -->
+        <Button
+            android:id="@+id/btnX"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:text="@string/x"
+            android:backgroundTint="@color/x"/>
 
-</FrameLayout>
+        <!-- Botón Me interesa -->
+        <Button
+            android:id="@+id/btnInterested"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:text="@string/V"
+            android:layout_marginStart="@dimen/margin_default"
+            android:backgroundTint="@color/green" />
+    </LinearLayout>
+</RelativeLayout>

@@ -11,13 +11,11 @@
         android:label="fragment_first"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_firstFragment_to_secondFragment"
-            app:destination="@id/secondFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim" />
-        <action
             android:id="@+id/action_firstFragment_to_startFragment"
             app:destination="@id/startFragment" />
+        <action
+            android:id="@+id/action_firstFragment_to_secondFragment"
+            app:destination="@id/secondFragment" />
     </fragment>
     <fragment
         android:id="@+id/secondFragment"
@@ -56,9 +54,43 @@
             android:id="@+id/action_fourthFragment_to_thirdFragment"
             app:destination="@id/thirdFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
+        <action
+            android:id="@+id/action_fourthFragment_to_fifthFragment"
+            app:destination="@id/fifthFragment" />
     </fragment>
     <fragment
+        android:id="@+id/fifthFragment"
+        android:name="com.example.projectbookbeaconapp.RegisterFragment4"
+        android:label="RegisterFragment4"
+        tools:layout="@layout/fragment_register_4" >
+        <action
+            android:id="@+id/action_fifthFragment_to_fourthFragment"
+            app:destination="@id/fourthFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+        <action
+            android:id="@+id/action_fifthFragment_to_sixthFragment"
+            app:destination="@id/sixthFragment" />
+    </fragment>
+
+    <fragment
         android:id="@+id/sixthFragment"
+        android:name="com.example.projectbookbeaconapp.RegisterFragment5"
+        android:label="RegisterFragment5"
+        tools:layout="@layout/fragment_register_5" >
+
+        <action
+            android:id="@+id/action_sixthFragment_to_fifthFragment"
+            app:destination="@id/fifthFragment" />
+        <action
+            android:id="@+id/action_sixthFragment_to_seventhFragment"
+            app:destination="@id/seventhFragment" />
+        <action
+            android:id="@+id/action_sixthFragment_to_startFragment"
+            app:destination="@id/startFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/seventhFragment"
         android:name="com.example.projectbookbeaconapp.RegisterFinal"
         android:label="RegisterFragment6"
         tools:layout="@layout/fragment_register_6" >
@@ -66,10 +98,13 @@
             android:name="correo"
             app:argType="string" />
         <argument android:name="contraseña" />
+        <action
+            android:id="@+id/action_seventhFragment_to_startFragment"
+            app:destination="@id/startFragment" />
     </fragment>
-    <activity
+    <fragment
         android:id="@+id/startFragment"
-        android:name="com.example.projectbookbeaconapp.MainActivity"
+        android:name="com.example.projectbookbeaconapp.StartFragment"
         android:label="fragment_inicio"
-        tools:layout="@layout/fragment_inicio" />
+        tools:layout="@layout/fragment_start" />
 </navigation>

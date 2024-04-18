@@ -6,7 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projectbookbeaconapp.databinding.FragmentHomeBinding
-import com.example.proyectobookbeacon.adapter.LibrosAdapter
+import com.example.projectbookbeaconapp.adapters.LibrosAdapter
+import com.example.projectbookbeaconapp.providers.LibrosProvider
 
 class HomeFragment : Fragment() {
 
@@ -20,6 +21,7 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater, container, false) // Se infla el binding
         return binding.root // Se retorna la raíz del binding
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
