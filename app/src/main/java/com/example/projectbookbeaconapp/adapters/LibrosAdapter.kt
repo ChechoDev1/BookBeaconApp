@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectbookbeaconapp.R
-import com.example.projectbookbeaconapp.providers.Autores
 import com.example.projectbookbeaconapp.providers.DatosLibros
 
 
