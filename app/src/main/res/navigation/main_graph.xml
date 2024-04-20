@@ -43,6 +43,10 @@
             android:id="@+id/action_thirdFragment_to_fourthFragment"
             app:destination="@id/fourthFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
+        <argument
+            android:name="nombre"
+            app:argType="string" />
+        <argument android:name="correo" />
 
     </fragment>
     <fragment
@@ -54,6 +58,19 @@
             android:id="@+id/action_fourthFragment_to_thirdFragment"
             app:destination="@id/thirdFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
+        <argument
+            android:name="nombre"
+            app:argType="string" />
+        <argument
+            android:name="correo"
+            app:argType="string" />
+        <argument
+            android:name="usuario"
+            app:argType="string" />
+        <argument android:name="contrasena" />
+        <action
+            android:id="@+id/action_fourthFragment_to_sixthFragment"
+            app:destination="@id/sixthFragment" />
     </fragment>
     <fragment
         android:id="@+id/sixthFragment"
@@ -65,7 +82,13 @@
             app:argType="string" />
 
         <argument
-            android:name="contraseña"
+            android:name="contrasena"
+            app:argType="string" />
+        <argument
+            android:name="nombre"
+            app:argType="string" />
+        <argument
+            android:name="usuario"
             app:argType="string" />
     </fragment>
 </navigation>

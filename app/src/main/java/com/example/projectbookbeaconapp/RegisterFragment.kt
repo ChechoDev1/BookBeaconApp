@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
@@ -20,14 +21,17 @@ class RegisterFragment : Fragment() {
 
         val btBotonSiguiente = root1.findViewById<Button>(R.id.btBotonSiguiente)
         val imgBack = root1.findViewById<ImageButton>(R.id.imgBack)
-        val etRegisterEmail = root1.findViewById<TextView>(R.id.etRegisterEmail)
+        val etRegisterEmail = root1.findViewById<EditText>(R.id.etRegisterEmail)
+        val etRegisterName = root1.findViewById<EditText>(R.id.etRegisterName)
 
         imgBack.setOnClickListener {
             findNavController().navigate(RegisterFragmentDirections.actionSecondFragmentToFirstFragment())
         }
 
         btBotonSiguiente.setOnClickListener {
-            findNavController().navigate(RegisterFragmentDirections.actionSecondFragmentToThirdFragment())
+            findNavController().navigate(RegisterFragmentDirections.actionSecondFragmentToThirdFragment(
+                nombre = etRegisterName.text.toString(),
+                correo = etRegisterEmail.text.toString()))
         }
 
         //findNavController().navigate(RegisterFragmentDirections.actionSecondFragmentToSixthFragment(

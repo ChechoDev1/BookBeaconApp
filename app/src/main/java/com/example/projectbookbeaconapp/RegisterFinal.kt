@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.navigation.fragment.navArgs
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -17,11 +18,24 @@ class RegisterFinal : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         auth = Firebase.auth
+        val nombre = args.nombre
+        val correo = args.correo
+        val usuario = args.usuario
+        val contraseña = args.contrasena
 
-        val email = args.correo
-        val contraseña = ""
+        val tvNombre = view.findViewById<TextView>(R.id.tvNombre)
+        tvNombre.text = nombre
+
+        val tvCorreo = view.findViewById<TextView>(R.id.tvCorreo)
+        tvCorreo.text = correo
+
+        val tvUsuario = view.findViewById<TextView>(R.id.tvUsuario)
+        tvUsuario.text = usuario
+
+        val tvContraseña = view.findViewById<TextView>(R.id.tvContraseña)
+        tvContraseña.text = contraseña
+
        /* auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -47,7 +61,8 @@ class RegisterFinal : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register_6, container, false)
+        val root = inflater.inflate(R.layout.fragment_register_6, container, false)
+        return root
     }
 
 
