@@ -34,10 +34,6 @@ class RegisterFragment : Fragment() {
                 correo = etRegisterEmail.text.toString()))
         }
 
-        //findNavController().navigate(RegisterFragmentDirections.actionSecondFragmentToSixthFragment(
-            //correo = etRegisterEmail.text.toString()
-            //))
-
         return root1
     }
 }
