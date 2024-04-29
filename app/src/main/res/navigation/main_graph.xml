@@ -15,6 +15,9 @@
             app:destination="@id/secondFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_firstFragment_to_navigationFragment"
+            app:destination="@id/navigationFragment" />
     </fragment>
     <fragment
         android:id="@+id/secondFragment"
@@ -39,44 +42,22 @@
             app:destination="@id/secondFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             />
-        <action
-            android:id="@+id/action_thirdFragment_to_fourthFragment"
-            app:destination="@id/fourthFragment"
-            app:enterAnim="@anim/nav_default_enter_anim" />
+
         <argument
             android:name="nombre"
             app:argType="string" />
         <argument android:name="correo" />
+        <action
+            android:id="@+id/action_thirdFragment_to_fourthFragment"
+            app:destination="@id/fourthFragment" />
 
     </fragment>
+
     <fragment
         android:id="@+id/fourthFragment"
         android:name="com.example.projectbookbeaconapp.RegisterFragment3"
-        android:label="RegisterFragment3"
+        android:label="fragment_fourth"
         tools:layout="@layout/fragment_register_3" >
-        <action
-            android:id="@+id/action_fourthFragment_to_thirdFragment"
-            app:destination="@id/thirdFragment"
-            app:enterAnim="@anim/nav_default_enter_anim" />
-        <argument
-            android:name="nombre"
-            app:argType="string" />
-        <argument
-            android:name="correo"
-            app:argType="string" />
-        <argument
-            android:name="usuario"
-            app:argType="string" />
-        <argument android:name="contrasena" />
-        <action
-            android:id="@+id/action_fourthFragment_to_sixthFragment"
-            app:destination="@id/sixthFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/sixthFragment"
-        android:name="com.example.projectbookbeaconapp.RegisterFinal"
-        android:label="RegisterFragment6"
-        tools:layout="@layout/fragment_register_6" >
         <argument
             android:name="correo"
             app:argType="string" />
@@ -90,5 +71,13 @@
         <argument
             android:name="usuario"
             app:argType="string" />
+        <action
+            android:id="@+id/action_fourthFragment_to_navigationFragment"
+            app:destination="@id/navigationFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/navigationFragment"
+        android:name="com.example.projectbookbeaconapp.NavigationFragment"
+        android:label="fragment_navigation"
+        tools:layout="@layout/fragment_navigation" />
 </navigation>

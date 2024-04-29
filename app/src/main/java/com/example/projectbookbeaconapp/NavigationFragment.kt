@@ -18,15 +18,38 @@ class NavigationFragment : Fragment() {
     ): View? {
         binding = FragmentNavigationBinding.inflate(inflater, container, false)
 
-        //binding.bottomNavigationView {
-
-        //}
-
         return binding.root
     }
 
-    private fun replaceFragment(fragment: Fragment) {
-        //val fragmentManager = supportFragmentManager
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        // Configurar el BottomNavigationView para navegar entre fragmentos
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.home -> {
+                    // Navegar al fragmento Home
+                    navigateToFragment(HomeFragment())
+                    true
+                }
+                R.id.book -> {
+                    // Navegar al fragmento Book
+                    navigateToFragment(BookFragment())
+                    true
+                }
+                R.id.person -> {
+                    // Navegar al fragmento Profile
+                    navigateToFragment(ProfileFragment())
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+
+    private fun navigateToFragment(fragment: Fragment) {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.frame_layout, fragment)
+            .commit()
     }
 }
