@@ -1,77 +1,83 @@
 package com.example.projectbookbeaconapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.firestore.FirebaseFirestore
+import com.example.projectbookbeaconapp.databinding.FragmentRegister3Binding
 
 class RegisterFragment3 : Fragment() {
 
     private lateinit var auth: FirebaseAuth
-    val args:RegisterFragment3Args by navArgs()
+    private lateinit var binding: FragmentRegister3Binding
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentRegister3Binding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         auth = Firebase.auth
+
+        // Obtener los argumentos pasados desde el fragmento anterior
+        val args: RegisterFragment3Args by navArgs()
         val nombre = args.nombre
         val correo = args.correo
         val usuario = args.usuario
         val contraseña = args.contrasena
 
-        val tvNombre = view.findViewById<TextView>(R.id.tvNombre)
-        tvNombre.text = nombre
+        // Configurar el texto de los TextView con los datos del usuario
+        /*
+        binding.tvNombre.text = nombre
+        binding.tvCorreo.text = correo
+        binding.tvUsuario.text = usuario
+        binding.tvContraseña.text = contraseña
+         */
 
-        val tvCorreo = view.findViewById<TextView>(R.id.tvCorreo)
-        tvCorreo.text = correo
+        // Manejar el evento de clic en el botón de registro
+        binding.btBotonSiguiente6.setOnClickListener {
+            // Obtener el email y la contraseña ingresados por el usuario
+            val email = correo // Utilizamos el correo obtenido anteriormente
+            val password = contraseña // Utilizamos la contraseña obtenida anteriormente
 
-        val tvUsuario = view.findViewById<TextView>(R.id.tvUsuario)
-        tvUsuario.text = usuario
+            // Crear el usuario con email y contraseña en Firebase Authentication
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(requireActivity()) { task ->
+                    if (task.isSuccessful) {
+                        // Registro exitoso, navegar a la siguiente pantalla
+                        Log.d(TAG, "createUserWithEmail:success")
 
-        val tvContraseña = view.findViewById<TextView>(R.id.tvContraseña)
-        tvContraseña.text = contraseña
+                        val db = FirebaseFirestore.getInstance()
 
-       /* auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    val user = auth.currentUser
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(
-                        baseContext,
-                        "Authentication failed.",
-                        Toast.LENGTH_SHORT,
-                    ).show()
-                    updateUI(null)
+
+                        findNavController().navigate(RegisterFragment3Directions.actionFourthFragmentToNavigationFragment())
+                    } else {
+                        // Fallo en el registro, mostrar un mensaje de error
+                        Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                        Toast.makeText(
+                            requireContext(), "Error al crear la cuenta: ${task.exception?.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
-            }
-
-        */
-    }
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val root = inflater.inflate(R.layout.fragment_register_3, container, false)
-
-        val btBotonSiguiente6 = root.findViewById<Button>(R.id.btBotonSiguiente6)
-
-        btBotonSiguiente6.setOnClickListener {
-            findNavController().navigate(RegisterFragment3Directions.actionFourthFragmentToNavigationFragment())
         }
-
-        return root
     }
-
-
+    companion object {
+        private const val TAG = "RegisterFragment3"
+    }
 }

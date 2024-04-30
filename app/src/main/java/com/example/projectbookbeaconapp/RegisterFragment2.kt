@@ -33,6 +33,20 @@ class RegisterFragment2 : Fragment() {
         }
 
         btBotonSiguiente2.setOnClickListener {
+
+            val usuario = etRegisterUsername.text.toString().trim()
+            val contrasena = etRegisterPassword.text.toString().trim()
+
+            if (usuario.isEmpty()) {
+                etRegisterUsername.error = "Ingrese un nombre de usuario valido"
+                return@setOnClickListener
+            }
+
+            if (contrasena.isEmpty()) {
+                etRegisterPassword.error = "Ingrese una contraseña valida"
+                return@setOnClickListener
+            }
+
             findNavController().navigate(RegisterFragment2Directions.actionThirdFragmentToFourthFragment(
                 nombre = nombre,
                 correo = correo,

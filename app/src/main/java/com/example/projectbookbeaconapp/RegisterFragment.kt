@@ -29,11 +29,24 @@ class RegisterFragment : Fragment() {
         }
 
         btBotonSiguiente.setOnClickListener {
-            findNavController().navigate(RegisterFragmentDirections.actionSecondFragmentToThirdFragment(
-                nombre = etRegisterName.text.toString(),
-                correo = etRegisterEmail.text.toString()))
-        }
+            val nombre = etRegisterName.text.toString().trim()
+            val correo = etRegisterEmail.text.toString().trim()
 
+            if (nombre.isEmpty()) {
+                etRegisterName.error = "Ingrese un nombre"
+                return@setOnClickListener
+            }
+
+            if (!android.util.Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
+                etRegisterEmail.error = "Ingrese un correo válido"
+                return@setOnClickListener
+            }
+
+            // Si pasa las validaciones, navegar al siguiente fragmento
+            findNavController().navigate(RegisterFragmentDirections.actionSecondFragmentToThirdFragment(
+                nombre = nombre,
+                correo = correo))
+        }
         return root1
     }
 }
