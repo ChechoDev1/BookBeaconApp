@@ -41,14 +41,6 @@ class RegisterFragment3 : Fragment() {
         val usuario = args.usuario
         val contraseña = args.contrasena
 
-        // Configurar el texto de los TextView con los datos del usuario
-        /*
-        binding.tvNombre.text = nombre
-        binding.tvCorreo.text = correo
-        binding.tvUsuario.text = usuario
-        binding.tvContraseña.text = contraseña
-         */
-
         // Manejar el evento de clic en el botón de registro
         binding.btBotonSiguiente6.setOnClickListener {
             // Obtener el email y la contraseña ingresados por el usuario
@@ -64,6 +56,23 @@ class RegisterFragment3 : Fragment() {
 
                         val db = FirebaseFirestore.getInstance()
 
+                        val user = hashMapOf(
+                            "nombre" to nombre,
+                            "correo" to correo,
+                            "usuario" to usuario
+                        )
+
+                        db.collection("users")
+                            .document(auth.currentUser!!.uid) // Utilizamos el UID del usuario como ID de documento
+                            .set(user)
+                            .addOnSuccessListener {
+                                // Los datos del usuario se han guardado correctamente en Firestore
+                                Log.d(TAG, "DocumentSnapshot added with ID: ${auth.currentUser!!.uid}")
+                            }
+                            .addOnFailureListener { e ->
+                                // Ocurrió un error al guardar los datos del usuario en Firestore
+                                Log.w(TAG, "Error adding document", e)
+                            }
 
                         findNavController().navigate(RegisterFragment3Directions.actionFourthFragmentToNavigationFragment())
                     } else {

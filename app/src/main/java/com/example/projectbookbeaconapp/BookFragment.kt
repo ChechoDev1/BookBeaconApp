@@ -13,7 +13,8 @@ class BookFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_book, container, false)
+        val root = inflater.inflate(R.layout.fragment_book, container, false)
+        return root
     }
 
 }

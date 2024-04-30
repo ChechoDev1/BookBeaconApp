@@ -51,6 +51,7 @@
         android:drawableStart="@drawable/vector_candado"
         android:drawableTint="@color/colorPrimary"
         android:hint="@string/hint_password"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etLoginEmail" />
