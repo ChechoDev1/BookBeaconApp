@@ -80,8 +80,15 @@
         android:name="com.example.projectbookbeaconapp.NavigationFragment"
         android:label="fragment_navigation"
         tools:layout="@layout/fragment_navigation" >
+
+    </fragment>
+    <fragment
+        android:id="@+id/bookFragment"
+        android:name="com.example.projectbookbeaconapp.BookFragment"
+        android:label="fragment_book"
+        tools:layout="@layout/fragment_book" >
         <action
-            android:id="@+id/action_navigationFragment_to_genresFragment"
+            android:id="@+id/action_bookFragment_to_genresFragment"
             app:destination="@id/genresFragment" />
     </fragment>
     <fragment
@@ -90,7 +97,8 @@
         android:label="GenresFragment"
         tools:layout="@layout/fragment_genres">
         <action
-            android:id="@+id/action_genresFragment_to_navigationFragment"
-            app:destination="@id/navigationFragment" />
+            android:id="@+id/action_genresFragment_to_bookFragment"
+            app:destination="@id/bookFragment" />
     </fragment>
+
 </navigation>

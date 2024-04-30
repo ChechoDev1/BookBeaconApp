@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.projectbookbeaconapp.databinding.ActivityMainBinding
+//import com.example.projectbookbeaconapp.databinding.ActivityMainBinding
+import com.example.projectbookbeaconapp.databinding.FragmentBookBinding
 import com.example.projectbookbeaconapp.databinding.FragmentNavigationBinding
 
 class NavigationFragment : Fragment() {
+    private lateinit var binding2 : FragmentBookBinding
     private lateinit var binding : FragmentNavigationBinding
 
     override fun onCreateView(

@@ -14,10 +14,6 @@ class GenresFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_genres, container, false)
-        val imgBack3 = root.findViewById<ImageButton>(R.id.imgBack3)
-        val btBotonSiguiente3 = root.findViewById<Button>(R.id.btBotonSiguiente3)
-
-
         return root
     }
 
