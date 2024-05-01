@@ -57,41 +57,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btBotonSiguiente6" />
 
-    <TextView
-        android:id="@+id/tvNombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_default"
-        android:text="nombre"
-        app:layout_constraintTop_toBottomOf="@id/ivLoginLogo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-    <TextView
-        android:id="@+id/tvCorreo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_default"
-        android:text="correo"
-        app:layout_constraintTop_toBottomOf="@id/tvNombre"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-    <TextView
-        android:id="@+id/tvUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_default"
-        android:text="usuario"
-        app:layout_constraintTop_toBottomOf="@id/tvCorreo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-    <TextView
-        android:id="@+id/tvContraseña"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_default"
-        android:text="contraseña"
-        app:layout_constraintTop_toBottomOf="@id/tvUsuario"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,7 +11,6 @@ import com.example.projectbookbeaconapp.databinding.FragmentBookBinding
 import com.example.projectbookbeaconapp.databinding.FragmentNavigationBinding
 
 class NavigationFragment : Fragment() {
-    private lateinit var binding2 : FragmentBookBinding
     private lateinit var binding : FragmentNavigationBinding
 
     override fun onCreateView(
@@ -25,33 +24,14 @@ class NavigationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // Configurar el BottomNavigationView para navegar entre fragmentos
-        binding.bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.home -> {
-                    // Navegar al fragmento Home
-                    navigateToFragment(HomeFragment())
-                    true
-                }
-                R.id.book -> {
-                    // Navegar al fragmento Book
-                    navigateToFragment(BookFragment())
-                    true
-                }
-                R.id.person -> {
-                    // Navegar al fragmento Profile
-                    navigateToFragment(ProfileFragment())
-                    true
-                }
-                else -> false
-            }
+        binding.btHome.setOnClickListener {
+            findNavController().navigate(NavigationFragmentDirections.actionNavigationFragmentToHomeFragment())
         }
-    }
-
-    private fun navigateToFragment(fragment: Fragment) {
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.frame_layout, fragment)
-            .commit()
+        binding.btMatch.setOnClickListener {
+            findNavController().navigate(NavigationFragmentDirections.actionNavigationFragmentToBookFragment())
+        }
+        binding.btPerfil.setOnClickListener {
+            findNavController().navigate(NavigationFragmentDirections.actionNavigationFragmentToProfileFragment())
+        }
     }
 }

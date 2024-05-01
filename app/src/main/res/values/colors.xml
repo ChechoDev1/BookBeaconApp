@@ -5,6 +5,7 @@
     <color name="red">#ff0000</color>
     <color name="blue">#008EFF</color>
     <color name="colorPrimary">#438B9B</color>
+    <color name="fondo">#80B7C3</color>
     <color name="colorPrimaryDark">#10259C</color>
     <color name="colorAccent">#085494</color>
     <color name="primary_light">#DCEDC8</color>

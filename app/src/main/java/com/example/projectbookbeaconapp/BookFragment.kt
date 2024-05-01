@@ -25,7 +25,9 @@ class BookFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.btGeneros.setOnClickListener {
+            findNavController().navigate(BookFragmentDirections.actionBookFragmentToGenresFragment())
+        }
     }
 
     override fun onDestroyView() {
