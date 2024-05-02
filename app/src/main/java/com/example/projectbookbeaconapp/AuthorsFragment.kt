@@ -1,23 +1,21 @@
 package com.example.projectbookbeaconapp
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageButton
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SwitchCompat
 import androidx.navigation.fragment.findNavController
-import com.example.projectbookbeaconapp.databinding.FragmentGenresBinding
+import com.example.projectbookbeaconapp.databinding.FragmentAuthorsBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class GenresFragment : Fragment() {
 
-    private var _binding: FragmentGenresBinding? = null
+class AuthorsFragment : Fragment() {
+
+    private var _binding: FragmentAuthorsBinding? = null
     private val binding get() = _binding!!
     private val selectedSwitches: MutableList<SwitchCompat> = mutableListOf()
     private lateinit var firestore: FirebaseFirestore
@@ -26,7 +24,7 @@ class GenresFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentGenresBinding.inflate(inflater, container, false)
+        _binding = FragmentAuthorsBinding.inflate(inflater, container, false)
         val root = binding.root
 
         // Inicializar Firebase Firestore
@@ -36,24 +34,24 @@ class GenresFragment : Fragment() {
 
         // Agregar los SwitchCompat a la lista de selección
         selectedSwitches.apply {
-            add(binding.swGen1)
-            add(binding.swGen2)
-            add(binding.swGen3)
-            add(binding.swGen4)
-            add(binding.swGen5)
-            add(binding.swGen6)
-            add(binding.swGen7)
-            add(binding.swGen8)
-            add(binding.swGen9)
-            add(binding.swGen10)
-            add(binding.swGen11)
-            add(binding.swGen12)
-            add(binding.swGen13)
-            add(binding.swGen14)
-            add(binding.swGen15)
-            add(binding.swGen16)
-            add(binding.swGen17)
-            add(binding.swGen18)
+            add(binding.swAut1)
+            add(binding.swAut2)
+            add(binding.swAut3)
+            add(binding.swAut4)
+            add(binding.swAut5)
+            add(binding.swAut6)
+            add(binding.swAut7)
+            add(binding.swAut8)
+            add(binding.swAut9)
+            add(binding.swAut10)
+            add(binding.swAut11)
+            add(binding.swAut12)
+            add(binding.swAut13)
+            add(binding.swAut14)
+            add(binding.swAut15)
+            add(binding.swAut16)
+            add(binding.swAut17)
+            add(binding.swAut18)
         }
 
         selectedSwitches.forEach { switch ->
@@ -67,66 +65,62 @@ class GenresFragment : Fragment() {
             }
         }
 
-        binding.btActualizarGeneros.setOnClickListener {
-            val selectedGenres = selectedSwitches
+        binding.btActualizarAutores.setOnClickListener {
+            val selectedAuthors = selectedSwitches
                 .filter { it.isChecked }
                 .map { switch ->
                     when (switch.id) {
-                        R.id.swGen1 -> "Fiction"
-                        R.id.swGen2 -> "Classics"
-                        R.id.swGen3 -> "Nonfiction"
-                        R.id.swGen4 -> "Literature"
-                        R.id.swGen5 -> "Fantasy"
-                        R.id.swGen6 -> "Novels"
-                        R.id.swGen7 -> "Historical"
-                        R.id.swGen8 -> "Mystery"
-                        R.id.swGen9 -> "Romance"
-                        R.id.swGen10 -> "Contemporary"
-                        R.id.swGen11 -> "Adventure"
-                        R.id.swGen12 -> "Young Adult"
-                        R.id.swGen13 -> "Adult"
-                        R.id.swGen14 -> "Philosophy"
-                        R.id.swGen15 -> "Science Fiction"
-                        R.id.swGen16 -> "Childrens"
-                        R.id.swGen17 -> "Humor"
-                        R.id.swGen18 -> "Thriller"
-
+                        R.id.swAut1 -> "Stephen King"
+                        R.id.swAut2 -> "William Shakespeare"
+                        R.id.swAut3 -> "J.R.R. Tolkien"
+                        R.id.swAut4 -> "Sandra Brown"
+                        R.id.swAut5 -> "P.G. Wodehouse"
+                        R.id.swAut6 -> "Roald Dahl"
+                        R.id.swAut7 -> "Orson Scott Card"
+                        R.id.swAut8 -> "Agatha Christie"
+                        R.id.swAut9 -> "Mercedes Lackey"
+                        R.id.swAut10 -> "James Patterson"
+                        R.id.swAut11 -> "Fyodor Dostoyevsky"
+                        R.id.swAut12 -> "Rumiko Takahashi"
+                        R.id.swAut13 -> "Margaret Weis"
+                        R.id.swAut14 -> "Gabriel García Márquez"
+                        R.id.swAut15 -> "C.S. Lewis"
+                        R.id.swAut16 -> "Terry Pratchett"
+                        R.id.swAut17 -> "Neil Gaiman"
+                        R.id.swAut18 -> "Charles Dickens"
                         else -> "" // Manejo para switches no mapeados
                     }
                 }
-            if (selectedGenres.isEmpty()) {
+            if (selectedAuthors.isEmpty()) {
                 showAlert("Debes seleccionar al menos un género.")
             } else {
                 // Subir los géneros seleccionados a Firestore
-                uploadGenresToFirestore(selectedGenres)
-                findNavController().navigate(GenresFragmentDirections.actionGenresFragmentToBookFragment())
+                uploadAuthorsToFirestore(selectedAuthors)
+                findNavController().navigate(AuthorsFragmentDirections.actionAuthorsFragmentToBookFragment())
             }
 
         }
-        binding.imgBack3.setOnClickListener {
-            findNavController().navigate(GenresFragmentDirections.actionGenresFragmentToBookFragment())
-        }
 
+        binding.imgBack3.setOnClickListener {
+            findNavController().navigate(AuthorsFragmentDirections.actionAuthorsFragmentToBookFragment())
+        }
 
         return root
     }
-
-    // Función para mostrar un diálogo de alerta
     private fun showAlert(message: String) {
         AlertDialog.Builder(requireContext())
             .setMessage(message)
             .setPositiveButton("Aceptar", null)
             .show()
     }
-
-    // Función para subir o actualizar los géneros seleccionados a Firestore
-    private fun uploadGenresToFirestore(genres: List<String>) {
+    // Función para subir o actualizar los autores seleccionados a Firestore
+    private fun uploadAuthorsToFirestore(authors: List<String>) {
         // Unimos los géneros en un solo string separado por coma
-        val genresString = genres.joinToString("; ")
+        val genresString = authors.joinToString("; ")
 
-        // Actualizamos el campo "genres" en el documento del usuario actual en Firestore
+        // Actualizamos el campo "autores" en el documento del usuario actual en Firestore
         firestore.collection("users").document(userId)
-            .update("genres", genresString)
+            .update("authors", genresString)
             .addOnSuccessListener {
                 // Manejar el éxito de la actualización
                 showAlert("Géneros actualizados correctamente.")

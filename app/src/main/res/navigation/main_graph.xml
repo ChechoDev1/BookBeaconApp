@@ -104,6 +104,9 @@
         <action
             android:id="@+id/action_bookFragment_to_genresFragment"
             app:destination="@id/genresFragment" />
+        <action
+            android:id="@+id/action_bookFragment_to_authorsFragment"
+            app:destination="@id/authorsFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -117,6 +120,15 @@
         tools:layout="@layout/fragment_genres">
         <action
             android:id="@+id/action_genresFragment_to_bookFragment"
+            app:destination="@id/bookFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/authorsFragment"
+        android:name="com.example.projectbookbeaconapp.AuthorsFragment"
+        android:label="AuthorsFragment"
+        tools:layout="@layout/fragment_authors">
+        <action
+            android:id="@+id/action_authorsFragment_to_bookFragment"
             app:destination="@id/bookFragment" />
     </fragment>
 

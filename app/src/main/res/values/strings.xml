@@ -21,4 +21,6 @@
     <string name="bienvenida">Bienvenido a Book Beacon</string>
     <string name="contrasena">Contraseña</string>
     <string name="email">email</string>
+    <string name="escoge_tus_5_autores_favoritos">Escoge tus 5 autores favoritos</string>
+    <string name="actualizar">Actualizar</string>
 </resources>

@@ -28,6 +28,9 @@ class BookFragment : Fragment() {
         binding.btGeneros.setOnClickListener {
             findNavController().navigate(BookFragmentDirections.actionBookFragmentToGenresFragment())
         }
+        binding.btAutores.setOnClickListener {
+            findNavController().navigate(BookFragmentDirections.actionBookFragmentToAuthorsFragment())
+        }
     }
 
     override fun onDestroyView() {
