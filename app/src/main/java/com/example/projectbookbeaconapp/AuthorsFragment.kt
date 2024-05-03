@@ -116,18 +116,18 @@ class AuthorsFragment : Fragment() {
     // Función para subir o actualizar los autores seleccionados a Firestore
     private fun uploadAuthorsToFirestore(authors: List<String>) {
         // Unimos los géneros en un solo string separado por coma
-        val genresString = authors.joinToString("; ")
+        val genresString = authors.joinToString(";")
 
         // Actualizamos el campo "autores" en el documento del usuario actual en Firestore
         firestore.collection("users").document(userId)
             .update("authors", genresString)
             .addOnSuccessListener {
                 // Manejar el éxito de la actualización
-                showAlert("Géneros actualizados correctamente.")
+                showAlert("Autores actualizados correctamente.")
             }
             .addOnFailureListener { e ->
                 // Manejar el fallo de la actualización
-                showAlert("Error al actualizar los géneros: ${e.message}")
+                showAlert("Error al actualizar los autores: ${e.message}")
             }
     }
 

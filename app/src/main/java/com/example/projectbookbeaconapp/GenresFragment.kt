@@ -122,7 +122,7 @@ class GenresFragment : Fragment() {
     // Función para subir o actualizar los géneros seleccionados a Firestore
     private fun uploadGenresToFirestore(genres: List<String>) {
         // Unimos los géneros en un solo string separado por coma
-        val genresString = genres.joinToString("; ")
+        val genresString = genres.joinToString(";")
 
         // Actualizamos el campo "genres" en el documento del usuario actual en Firestore
         firestore.collection("users").document(userId)

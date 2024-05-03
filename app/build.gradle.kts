@@ -52,6 +52,9 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation ("com.firebaseui:firebase-ui-auth:7.2.0")
     implementation("com.google.firebase:firebase-firestore")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
