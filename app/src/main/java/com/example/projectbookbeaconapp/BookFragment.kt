@@ -1,5 +1,6 @@
 package com.example.projectbookbeaconapp
 
+import BookRecommendationAdapter
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.projectbookbeaconapp.databinding.FragmentBookBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -53,9 +56,42 @@ class BookFragment : Fragment() {
             override fun onResponse(call: Call<List<BookRecommendation>>, response: Response<List<BookRecommendation>>) {
                 if (response.isSuccessful) {
                     val recommendations = response.body()
+                    recommendations?.let {
+                        if (it.isNotEmpty()) {
+                            binding.btGenerarRecomendacion.setOnClickListener {
+                                // Verificar si el usuario tiene géneros y autores definidos
+                                firestore.collection("users").document(userId).get()
+                                    .addOnSuccessListener { document ->
+                                        if (document != null && document.exists()) {
+                                            val generos = document["genres"]
+                                            val autores = document["authors"]
+                                            if (generos != null && autores != null) {
+                                                // Si ambos campos existen, proceder a generar las recomendaciones
+                                                val recyclerView: RecyclerView = view.findViewById(R.id.recyclerRecomendation)
+                                                recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                                                val adapter = recommendations.let { it1 -> BookRecommendationAdapter(it1) }
+                                                recyclerView.adapter = adapter
+                                            } else {
+                                                // Si alguno de los campos no existe, mostrar un mensaje para actualizar preferencias
+                                                Toast.makeText(context, "Por favor, actualiza tus preferencias de géneros y autores.", Toast.LENGTH_LONG).show()
+                                            }
+                                        } else {
+                                            // Si el documento no existe, también pedir al usuario que actualice sus preferencias
+                                            Toast.makeText(context, "Por favor, completa la información de tu perfil.", Toast.LENGTH_LONG).show()
+                                        }
+                                    }
+                                    .addOnFailureListener { exception ->
+                                        // Manejar el error de Firestore
+                                        Toast.makeText(context, "Error al obtener la información del usuario.", Toast.LENGTH_LONG).show()
+                                        Log.e("Firestore", "Error al obtener el documento", exception)
+                                    }
+                            }
+                        }
+                    }
                     Log.i("recomendacion","todo bien!")
+
                 } else {
-                    // Manejar el error
+                    Log.e("recomendacion", "Error en la solicitud: ${response.code()}")
                 }
             }
 
