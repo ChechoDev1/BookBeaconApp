@@ -19,6 +19,10 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -28,13 +32,6 @@ android {
             )
         }
     }
-
-    buildFeatures{
-
-        viewBinding = true
-
-    }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -48,17 +45,16 @@ dependencies {
 
     implementation(libs.firebase.auth)
     implementation(libs.glide)
-    implementation(libs.retrofit)
-    implementation(libs.gson)
     val navVersion = "2.7.7"
 
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
     implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
     implementation("com.google.firebase:firebase-analytics")
-    implementation("com.google.firebase:firebase-firestore:25.0.0")
-    implementation ("com.firebaseui:firebase-ui-auth:8.0.2")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.firebaseui:firebase-ui-auth:7.2.0")
+    implementation("com.google.firebase:firebase-firestore")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 
 
     implementation(libs.androidx.core.ktx)
