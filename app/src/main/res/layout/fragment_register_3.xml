@@ -1,411 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".RegisterFinal">
 
-    <ImageButton
-        android:id="@+id/imgBack3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_default"
-        android:background="@color/white"
-        android:src="@drawable/vector_back"
+    <TextView
+        android:id="@+id/tvTitulo5"
+        style="@style/Titulo"
+        android:layout_width="@dimen/width_title"
+        android:layout_height="@dimen/heigh_title"
+        android:layout_marginTop="50dp"
+        android:text="@string/finalizacion"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvTitulo3"
+        android:id="@+id/tvTitulo6"
         style="@style/Titulo"
         android:layout_width="@dimen/width_title"
         android:layout_height="@dimen/heigh_title"
-        android:layout_marginTop="20dp"
-        android:text="@string/cuentanos_un_poco_de_ti"
+        android:layout_marginTop="150dp"
+        android:text="@string/bienvenida"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgBack3" />
-
-    <TextView
-        android:id="@+id/tvTexto5"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="30dp"
-        android:text="@string/escoge_tus_5_generos_favoritos"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitulo3" />
-
-    <ScrollView
-        android:id="@+id/scroll"
-        android:layout_width="240dp"
-        android:layout_height="408dp"
-        android:layout_margin="@dimen/margin_default"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTexto5">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/swGen1"
-                android:layout_width="45dp"
-                android:layout_height="30dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Ficción"
-                app:layout_constraintStart_toEndOf="@+id/swGen1"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/imgFiction"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/ficcion"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/swGen1" />
-
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/swGen2"
-                android:layout_width="45dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="80dp"
-                app:layout_constraintStart_toEndOf="@id/swGen1"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Clasicos"
-                app:layout_constraintStart_toEndOf="@+id/swGen2"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/imgClassics"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/classics"
-                app:layout_constraintStart_toStartOf="@id/swGen2"
-                app:layout_constraintTop_toBottomOf="@+id/swGen2" />
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/swGen3"
-                android:layout_width="45dp"
-                android:layout_height="30dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imgFiction" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="No ficción"
-                app:layout_constraintStart_toEndOf="@+id/swGen3"
-                app:layout_constraintTop_toBottomOf="@id/imgFiction" />
-
-            <ImageView
-                android:id="@+id/imgNonFiction"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/non_fiction"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/swGen3" />
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/swGen4"
-                android:layout_width="45dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="80dp"
-                app:layout_constraintStart_toEndOf="@id/swGen3"
-                app:layout_constraintTop_toBottomOf="@id/imgFiction" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Literatura"
-                app:layout_constraintStart_toEndOf="@+id/swGen4"
-                app:layout_constraintTop_toBottomOf="@id/imgClassics" />
-
-            <ImageView
-                android:id="@+id/imgLiterature"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/literature"
-                app:layout_constraintStart_toStartOf="@id/swGen4"
-                app:layout_constraintTop_toBottomOf="@+id/swGen4" />
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/swGen5"
-                android:layout_width="45dp"
-                android:layout_height="30dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imgNonFiction" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Fantasía"
-                app:layout_constraintStart_toEndOf="@+id/swGen5"
-                app:layout_constraintTop_toBottomOf="@id/imgNonFiction" />
-
-            <ImageView
-                android:id="@+id/imgFantasy"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/fantasy"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/swGen5" />
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/swGen6"
-                android:layout_width="45dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="80dp"
-                app:layout_constraintStart_toEndOf="@id/swGen5"
-                app:layout_constraintTop_toBottomOf="@id/imgLiterature" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Novelas"
-                app:layout_constraintStart_toEndOf="@+id/swGen6"
-                app:layout_constraintTop_toBottomOf="@id/imgLiterature" />
-
-            <ImageView
-                android:id="@+id/imgNovels"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/novels"
-                app:layout_constraintStart_toStartOf="@id/swGen6"
-                app:layout_constraintTop_toBottomOf="@+id/swGen6" />
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/swGen7"
-                android:layout_width="45dp"
-                android:layout_height="30dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imgFantasy" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Histórico"
-                app:layout_constraintStart_toEndOf="@+id/swGen7"
-                app:layout_constraintTop_toBottomOf="@id/imgFantasy" />
-
-            <ImageView
-                android:id="@+id/imgHistory"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/historical"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/swGen7" />
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/swGen8"
-                android:layout_width="45dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="80dp"
-                app:layout_constraintStart_toEndOf="@id/swGen7"
-                app:layout_constraintTop_toBottomOf="@id/imgNovels" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Misterio"
-                app:layout_constraintStart_toEndOf="@+id/swGen8"
-                app:layout_constraintTop_toBottomOf="@id/imgNovels" />
-
-            <ImageView
-                android:id="@+id/imgMistery"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/mistery"
-                app:layout_constraintStart_toStartOf="@id/swGen8"
-                app:layout_constraintTop_toBottomOf="@+id/swGen8" />
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/swGen9"
-                android:layout_width="45dp"
-                android:layout_height="30dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imgHistory" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Romance"
-                app:layout_constraintStart_toEndOf="@+id/swGen9"
-                app:layout_constraintTop_toBottomOf="@id/imgHistory" />
-
-            <ImageView
-                android:id="@+id/imgRomance"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/romance"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/swGen9" />
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/swGen10"
-                android:layout_width="45dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="80dp"
-                app:layout_constraintStart_toEndOf="@id/swGen9"
-                app:layout_constraintTop_toBottomOf="@id/imgMistery" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Contemporáneo"
-                app:layout_constraintStart_toEndOf="@+id/swGen10"
-                app:layout_constraintTop_toBottomOf="@id/imgMistery" />
-
-            <ImageView
-                android:id="@+id/imgContemporary"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/contemporary"
-                app:layout_constraintStart_toStartOf="@id/swGen10"
-                app:layout_constraintTop_toBottomOf="@+id/swGen10" />
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/swGen11"
-                android:layout_width="45dp"
-                android:layout_height="30dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imgRomance" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Aventura"
-                app:layout_constraintStart_toEndOf="@+id/swGen11"
-                app:layout_constraintTop_toBottomOf="@id/imgRomance" />
-
-            <ImageView
-                android:id="@+id/imgAdventure"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/adventure"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/swGen11" />
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/swGen12"
-                android:layout_width="45dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="80dp"
-                app:layout_constraintStart_toEndOf="@id/swGen11"
-                app:layout_constraintTop_toBottomOf="@id/imgContemporary" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="J Adultos"
-                app:layout_constraintStart_toEndOf="@+id/swGen12"
-                app:layout_constraintTop_toBottomOf="@id/imgContemporary" />
-
-            <ImageView
-                android:id="@+id/imgYoungAdult"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/youngadult"
-                app:layout_constraintStart_toStartOf="@id/swGen12"
-                app:layout_constraintTop_toBottomOf="@+id/swGen12" />
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/swGen13"
-                android:layout_width="45dp"
-                android:layout_height="30dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imgAdventure" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Adultos"
-                app:layout_constraintStart_toEndOf="@+id/swGen13"
-                app:layout_constraintTop_toBottomOf="@id/imgAdventure" />
-
-            <ImageView
-                android:id="@+id/imgAdult"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/adult"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/swGen13" />
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/swGen14"
-                android:layout_width="45dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="80dp"
-                app:layout_constraintStart_toEndOf="@id/swGen13"
-                app:layout_constraintTop_toBottomOf="@id/imgYoungAdult" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Filosofía"
-                app:layout_constraintStart_toEndOf="@+id/swGen14"
-                app:layout_constraintTop_toBottomOf="@id/imgYoungAdult" />
-
-            <ImageView
-                android:id="@+id/imgPhilosophy"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/philosophy"
-                app:layout_constraintStart_toStartOf="@id/swGen14"
-                app:layout_constraintTop_toBottomOf="@+id/swGen14" />
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/swGen15"
-                android:layout_width="45dp"
-                android:layout_height="30dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imgAdult" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Sci-Fi"
-                app:layout_constraintStart_toEndOf="@+id/swGen15"
-                app:layout_constraintTop_toBottomOf="@id/imgAdult" />
-
-            <ImageView
-                android:id="@+id/imgSciFi"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/scifi"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/swGen15" />
-            
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </ScrollView>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btBotonSiguiente3"
+        android:id="@+id/btBotonSiguiente6"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_default"
+        android:layout_margin="30dp"
         android:backgroundTint="@color/colorPrimary"
         android:text="@string/button_siguiente"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/scroll" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTitulo6" />
+
+    <ImageView
+        android:id="@+id/ivLoginLogo"
+        android:layout_width="@dimen/width_logo"
+        android:layout_height="@dimen/heigh_logo"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/logodefinitivo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btBotonSiguiente6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

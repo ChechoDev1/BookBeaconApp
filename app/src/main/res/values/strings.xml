@@ -50,4 +50,5 @@
     <string name="buscar">Buscar un libro</string>
     <string name="libros_guardados">Libros guardados</string>
     <string name="user1">User1</string>
+    <string name="Preferencias_title">Ingresa tus preferencias oprimiento los botones</string>
 </resources>

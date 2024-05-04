@@ -9,8 +9,8 @@
 
     <item
     android:icon="@drawable/match_icon"
-    android:id="@+id/match"
-        android:title="@string/match_tittle" />
+    android:id="@+id/book"
+    android:title="@string/match_tittle" />
 
     <item
     android:icon="@drawable/vector_person"

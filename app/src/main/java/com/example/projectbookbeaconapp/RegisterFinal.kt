@@ -23,7 +23,7 @@ class RegisterFinal : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register_6, container, false)
+        return inflater.inflate(R.layout.fragment_register_3, container, false)
     }
 
 

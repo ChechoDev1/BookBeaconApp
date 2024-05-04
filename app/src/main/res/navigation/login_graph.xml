@@ -11,11 +11,13 @@
         android:label="fragment_first"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_firstFragment_to_startFragment"
-            app:destination="@id/startFragment" />
-        <action
             android:id="@+id/action_firstFragment_to_secondFragment"
-            app:destination="@id/secondFragment" />
+            app:destination="@id/secondFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_firstFragment_to_navigationFragment"
+            app:destination="@id/navigationFragment" />
     </fragment>
     <fragment
         android:id="@+id/secondFragment"
@@ -40,71 +42,96 @@
             app:destination="@id/secondFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             />
+
+        <argument
+            android:name="nombre"
+            app:argType="string" />
+        <argument android:name="correo" />
         <action
             android:id="@+id/action_thirdFragment_to_fourthFragment"
-            app:destination="@id/fourthFragment"
-            app:enterAnim="@anim/nav_default_enter_anim" />
+            app:destination="@id/fourthFragment" />
+
     </fragment>
+
     <fragment
         android:id="@+id/fourthFragment"
         android:name="com.example.projectbookbeaconapp.RegisterFragment3"
-        android:label="RegisterFragment3"
+        android:label="fragment_fourth"
         tools:layout="@layout/fragment_register_3" >
-        <action
-            android:id="@+id/action_fourthFragment_to_thirdFragment"
-            app:destination="@id/thirdFragment"
-            app:enterAnim="@anim/nav_default_enter_anim" />
-        <action
-            android:id="@+id/action_fourthFragment_to_fifthFragment"
-            app:destination="@id/fifthFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/fifthFragment"
-        android:name="com.example.projectbookbeaconapp.RegisterFragment4"
-        android:label="RegisterFragment4"
-        tools:layout="@layout/fragment_register_4" >
-        <action
-            android:id="@+id/action_fifthFragment_to_fourthFragment"
-            app:destination="@id/fourthFragment"
-            app:enterAnim="@anim/nav_default_enter_anim" />
-        <action
-            android:id="@+id/action_fifthFragment_to_sixthFragment"
-            app:destination="@id/sixthFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/sixthFragment"
-        android:name="com.example.projectbookbeaconapp.RegisterFragment5"
-        android:label="RegisterFragment5"
-        tools:layout="@layout/fragment_register_5" >
-
-        <action
-            android:id="@+id/action_sixthFragment_to_fifthFragment"
-            app:destination="@id/fifthFragment" />
-        <action
-            android:id="@+id/action_sixthFragment_to_seventhFragment"
-            app:destination="@id/seventhFragment" />
-        <action
-            android:id="@+id/action_sixthFragment_to_startFragment"
-            app:destination="@id/startFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/seventhFragment"
-        android:name="com.example.projectbookbeaconapp.RegisterFinal"
-        android:label="RegisterFragment6"
-        tools:layout="@layout/fragment_register_6" >
         <argument
             android:name="correo"
             app:argType="string" />
-        <argument android:name="contraseña" />
+
+        <argument
+            android:name="contrasena"
+            app:argType="string" />
+        <argument
+            android:name="nombre"
+            app:argType="string" />
+        <argument
+            android:name="usuario"
+            app:argType="string" />
         <action
-            android:id="@+id/action_seventhFragment_to_startFragment"
-            app:destination="@id/startFragment" />
+            android:id="@+id/action_fourthFragment_to_navigationFragment"
+            app:destination="@id/navigationFragment" />
     </fragment>
     <fragment
-        android:id="@+id/startFragment"
+        android:id="@+id/navigationFragment"
         android:name="com.example.projectbookbeaconapp.StartFragment"
-        android:label="fragment_inicio"
-        tools:layout="@layout/fragment_start" />
+        android:label="fragment_navigation"
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_navigationFragment_to_authorsFragment"
+            app:destination="@id/authorsFragment" />
+        <action
+            android:id="@+id/action_navigationFragment_to_genresFragment"
+            app:destination="@id/genresFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.projectbookbeaconapp.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/bookFragment"
+        android:name="com.example.projectbookbeaconapp.BookFragment"
+        android:label="fragment_book"
+        tools:layout="@layout/fragment_book" >
+        <action
+            android:id="@+id/action_bookFragment_to_genresFragment"
+            app:destination="@id/genresFragment" />
+        <action
+            android:id="@+id/action_bookFragment_to_authorsFragment"
+            app:destination="@id/authorsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.projectbookbeaconapp.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/genresFragment"
+        android:name="com.example.projectbookbeaconapp.GenresFragment"
+        android:label="GenresFragment"
+        tools:layout="@layout/fragment_genres">
+        <action
+            android:id="@+id/action_genresFragment_to_bookFragment"
+            app:destination="@id/bookFragment" />
+        <action
+            android:id="@+id/action_genresFragment_to_navigationFragment"
+            app:destination="@id/navigationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/authorsFragment"
+        android:name="com.example.projectbookbeaconapp.AuthorsFragment"
+        android:label="AuthorsFragment"
+        tools:layout="@layout/fragment_authors">
+        <action
+            android:id="@+id/action_authorsFragment_to_bookFragment"
+            app:destination="@id/bookFragment" />
+        <action
+            android:id="@+id/action_authorsFragment_to_navigationFragment"
+            app:destination="@id/navigationFragment" />
+    </fragment>
+
 </navigation>
