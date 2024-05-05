@@ -2,12 +2,12 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.ProjectBookBeaconApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/gray   </item>
+        <item name="colorPrimary">@color/gray  </item>
         <item name="colorPrimaryVariant">@color/black</item>
         <item name="colorOnPrimary">@color/brandColor</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/black</item>
-        <item name="colorSecondaryVariant">@color/gray</item>
+        <item name="colorSecondaryVariant">@color/black</item>
         <item name="colorOnSecondary">@color/brandColor</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>

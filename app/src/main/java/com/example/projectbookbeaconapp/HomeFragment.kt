@@ -1,31 +1,116 @@
 package com.example.projectbookbeaconapp
 
-import android.annotation.SuppressLint
-import android.content.ContentValues.TAG
-import android.icu.text.CaseMap.Title
+import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.projectbookbeaconapp.adapters.LibrosAdapter
 import com.example.projectbookbeaconapp.databinding.FragmentHomeBinding
-import com.example.projectbookbeaconapp.providers.libros_imagenes
-import com.google.firebase.firestore.DocumentChange
-import com.google.firebase.firestore.EventListener
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreException
-import com.google.firebase.firestore.QuerySnapshot
-import com.google.firebase.firestore.toObject
+import com.example.projectbookbeaconapp.providers.LibrosProvider
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var librosArrayList: ArrayList<libros_imagenes>
-    private lateinit var librosAdapter: LibrosAdapter
-    private lateinit var firestore: FirebaseFirestore
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        LibrosProvider.cargarLibrosDesdeCSV(requireContext())
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initRecyclerView() // Se llama a la función sin pasar la vista
+
+
+
+        // Encuentra los botones y agrega un OnClickListener a cada uno
+        val botonAccion = binding.Accion
+        botonAccion.setOnClickListener {
+            val resultados = LibrosProvider.buscarLibros("Action")
+            (binding.LibrosView.adapter as LibrosAdapter).actualizarDatos(resultados)
+        }
+
+        val botonAventura = binding.Aventura
+        botonAventura.setOnClickListener {
+            val resultados = LibrosProvider.buscarLibros("Aventura")
+            (binding.LibrosView.adapter as LibrosAdapter).actualizarDatos(resultados)
+        }
+
+        val botonThriller = binding.Thriller
+        botonThriller.setOnClickListener {
+            val resultados = LibrosProvider.buscarLibros("thriller")
+            (binding.LibrosView.adapter as LibrosAdapter).actualizarDatos(resultados)
+        }
+
+        val botonDrama = binding.Drama
+        botonDrama.setOnClickListener {
+            val resultados = LibrosProvider.buscarLibros("Drama")
+            (binding.LibrosView.adapter as LibrosAdapter).actualizarDatos(resultados)
+        }
+
+        val botonComedia = binding.Comedia
+        botonComedia.setOnClickListener {
+            val resultados = LibrosProvider.buscarLibros("Comedy")
+            (binding.LibrosView.adapter as LibrosAdapter).actualizarDatos(resultados)
+        }
+
+        val botonSuspenso = binding.Suspenso
+        botonSuspenso.setOnClickListener {
+            val resultados = LibrosProvider.buscarLibros("Suspense")
+            (binding.LibrosView.adapter as LibrosAdapter).actualizarDatos(resultados)
+        }
+
+        val botonTerror = binding.Terror
+        botonTerror.setOnClickListener {
+            val resultados = LibrosProvider.buscarLibros("Terror")
+            (binding.LibrosView.adapter as LibrosAdapter).actualizarDatos(resultados)
+        }
+
+        val botonFiccion = binding.Ficcion
+        botonFiccion.setOnClickListener {
+            val resultados = LibrosProvider.buscarLibros("Fiction")
+            (binding.LibrosView.adapter as LibrosAdapter).actualizarDatos(resultados)
+        }
+
+
+
+        val searchEditText = binding.SearchText
+        searchEditText.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH ||
+                (event?.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_ENTER)) {
+                val query = v.text.toString()
+                val resultados = LibrosProvider.buscarLibros(query)
+                // Actualiza tu RecyclerView con los resultados
+                (binding.LibrosView.adapter as LibrosAdapter).actualizarDatos(resultados)
+                // Limpia el EditText
+                v.text = ""
+                // Oculta el teclado
+                val imm = v.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(v.windowToken, 0)
+                true
+            } else {
+                false
+            }
+        }
+
+    }
+
+    private fun initRecyclerView() {
+        val manager = LinearLayoutManager(requireContext())
+        val decoration = DividerItemDecoration(requireContext(), manager.orientation)
+        binding.LibrosView.layoutManager = manager
+        binding.LibrosView.adapter = LibrosAdapter(LibrosProvider.obtenerLibrosAleatorios())
+        binding.LibrosView.addItemDecoration(decoration)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,54 +118,9 @@ class HomeFragment : Fragment() {
     ): View {
         // Inflar el layout utilizando View Binding
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val view = binding.root
-
-        //Obtener una referencia a LibrosView desde el layout inflado
-        val recyclerView = binding.LibrosView
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.setHasFixedSize(true)
-
-        // Inicializar ArrayList y Adapter
-        librosArrayList = arrayListOf()
-        librosAdapter = LibrosAdapter(librosArrayList)
-
-        // Configurar el adapter en el RecyclerView
-        recyclerView.adapter = librosAdapter
-        eventChangeListener()
-
-
-        return view
+        return binding.root
     }
 
-    private fun eventChangeListener() {
 
-        firestore = FirebaseFirestore.getInstance()
 
-        firestore.collection("libros_imagenes")
-            .addSnapshotListener(object : EventListener<QuerySnapshot> {
-                override fun onEvent(
-                    value: QuerySnapshot?, error: FirebaseFirestoreException?
-                ) {
-                    if (error != null) {
-                        Log.e("Firestore Error", error.message.toString())
-                        return
-                    }
-                    for (dc: DocumentChange in value?.documentChanges!!) {
-                        val data = dc.document.data["0"]as Map<*, *>
-                        if (dc.type == DocumentChange.Type.ADDED) {
-                            // Extrae los atributos que necesitas del mapa
-                            val title = data["Title"] as? String ?: ""
-                            val genres = data["genres"] as? String ?: ""
-                            val author = data["Author"] as? String ?: ""
-                            val link = data["Link"] as? String ?: ""
-
-                            val libroImagenes = libros_imagenes(title, genres, author, link)
-
-                            librosArrayList.add(libroImagenes)
-                            Log.i("Info", libroImagenes.toString())
-                        }
-                    break}
-                }
-            })
-    }
 }

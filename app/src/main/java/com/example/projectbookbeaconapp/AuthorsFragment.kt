@@ -7,9 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.projectbookbeaconapp.adapters.AutoresAdapter
 import com.example.projectbookbeaconapp.databinding.FragmentAuthorsBinding
-import com.example.projectbookbeaconapp.providers.AutoresProvider
 
 class AuthorsFragment : Fragment() {
 
@@ -29,7 +27,6 @@ class AuthorsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initRecyclerView()
 
         // Set up the click listeners for the buttons
         binding.imgBack4.setOnClickListener {
@@ -38,8 +35,4 @@ class AuthorsFragment : Fragment() {
 
     }
 
-    private fun initRecyclerView() {
-        binding.recyclerAutores.layoutManager = GridLayoutManager(requireContext(), 2)
-        binding.recyclerAutores.adapter = AutoresAdapter(AutoresProvider.autoresList)
-    }
 }

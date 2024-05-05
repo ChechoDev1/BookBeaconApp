@@ -31,7 +31,7 @@
     <string name="search" />
     <string name="G_Accion">Acción</string>
     <string name="G_Aventura">Aventura</string>
-    <string name="G_Misterio">Misterio</string>
+    <string name="G_Thriller">Thriller</string>
     <string name="G_Drama">Drama</string>
     <string name="G_Comedia">Comedia</string>
     <string name="G_Suspenso">Suspenso</string>
@@ -51,4 +51,7 @@
     <string name="libros_guardados">Libros guardados</string>
     <string name="user1">User1</string>
     <string name="Preferencias_title">Ingresa tus preferencias oprimiento los botones</string>
+    <string name="usuario">Usuario</string>
+    <string name="cerrar_sesi_n">Cerrar sesión</string>
+    <string name="busca_un_libro">Busca un libro!</string>
 </resources>

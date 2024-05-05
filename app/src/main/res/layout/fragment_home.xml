@@ -3,12 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:layout_marginEnd="20dp"
     android:layout_marginStart="20dp"
     tools:context=".HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <TextView
         android:id="@+id/home"
@@ -17,17 +15,18 @@
         android:text="@string/Home_tittle"
         android:textSize="26sp"
         android:layout_marginTop="5dp"
-        android:textColor="@color/black"
+        android:textColor="@color/brandColor"
         />
 
     <EditText
+        android:id="@+id/SearchText"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_marginTop="60dp"
         android:background="@drawable/search_bar"
-        android:hint="@string/search"
-        android:autofillHints=""
+        android:hint="@string/busca_un_libro"
         android:inputType="text"
+        android:imeOptions="actionSearch"
         />
 
     <HorizontalScrollView
@@ -43,7 +42,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/Acción"
+                android:id="@+id/Accion"
                 android:layout_width="wrap_content"
                 android:layout_height="33dp"
                 android:layout_marginEnd="16dp"
@@ -63,12 +62,12 @@
                 android:textSize="12sp" />
 
             <Button
-                android:id="@+id/Misterio"
+                android:id="@+id/Thriller"
                 android:layout_width="wrap_content"
                 android:layout_height="33dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/search_button"
-                android:text="@string/G_Misterio"
+                android:text="@string/G_Thriller"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 

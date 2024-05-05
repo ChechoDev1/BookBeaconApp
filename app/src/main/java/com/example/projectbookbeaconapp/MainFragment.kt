@@ -14,7 +14,6 @@ import com.google.firebase.auth.FirebaseAuth
 
 class MainFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
-    private lateinit var auth: FirebaseAuth
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -24,9 +23,15 @@ class MainFragment : Fragment() {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         val root = binding.root
 
-
-
         val auth = FirebaseAuth.getInstance()
+
+        // Verificar si el usuario ya está autenticado
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            // El usuario ya está autenticado, redirígelo a la pantalla principal
+            findNavController().navigate(MainFragmentDirections.actionFirstFragmentToNavigationFragment())
+            return root
+        }
 
         // Acceder al botón btRegister
         binding.btRegister.setOnClickListener {
