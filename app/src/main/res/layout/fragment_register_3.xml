@@ -11,13 +11,14 @@
         style="@style/Titulo"
         android:layout_width="@dimen/width_title"
         android:layout_height="@dimen/heigh_title"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="112dp"
         android:text="@string/finalizacion"
+        android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,13 +27,14 @@
         style="@style/Titulo"
         android:layout_width="@dimen/width_title"
         android:layout_height="@dimen/heigh_title"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="216dp"
         android:text="@string/bienvenida"
+        android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,11 +43,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
+        android:layout_marginTop="68dp"
         android:backgroundTint="@color/colorPrimary"
         android:text="@string/button_siguiente"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/tvTitulo6" />
 
     <ImageView

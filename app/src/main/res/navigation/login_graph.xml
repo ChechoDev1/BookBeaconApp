@@ -86,6 +86,9 @@
         <action
             android:id="@+id/action_navigationFragment_to_genresFragment"
             app:destination="@id/genresFragment" />
+        <action
+            android:id="@+id/action_navigationFragment_to_editFragment"
+            app:destination="@id/editFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -149,6 +152,9 @@
         <action
             android:id="@+id/action_editFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_editFragment_to_navigationFragment"
+            app:destination="@id/navigationFragment" />
     </fragment>
 
 </navigation>

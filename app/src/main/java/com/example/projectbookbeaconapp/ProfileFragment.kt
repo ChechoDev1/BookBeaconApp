@@ -9,8 +9,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,13 +19,10 @@ import com.example.projectbookbeaconapp.adapters.SavedBooksAdapter
 import com.example.projectbookbeaconapp.databinding.FragmentProfileBinding
 import com.example.projectbookbeaconapp.providers.UserBook
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 
 class ProfileFragment : Fragment() {
     private lateinit var binding : FragmentProfileBinding
-    private lateinit var tvUserName: TextView
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
 
@@ -37,6 +35,8 @@ class ProfileFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val imgEdit: ImageView = view.findViewById(R.id.imgEdit)
+
         super.onViewCreated(view, savedInstanceState)
         auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
@@ -61,13 +61,27 @@ class ProfileFragment : Fragment() {
                 Log.d(ContentValues.TAG, "get failed with ", exception)
             }
 
-        binding.btnLogout.setOnClickListener {
+        val btnLogout: Button = view.findViewById(R.id.btnLogout)
+        btnLogout.setOnClickListener {
+            // Aquí deberías manejar la lógica para cerrar sesión
             auth.signOut()
-            findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToFirstFragment())
+            // Crear un Intent para iniciar MainActivity
+            val intent = Intent(activity, MainActivity::class.java)
+
+            // Iniciar MainActivity
+            startActivity(intent)
+
+            // Finalizar la actividad actual (opcional)
+            activity?.finish()
         }
 
-        binding.imgEdit.setOnClickListener {
-            findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToEditFragment())
+
+        imgEdit.setOnClickListener {
+            // Obtener el NavController de la actividad principal
+            val navController = requireActivity().findNavController(R.id.navigationStartFragment)
+
+            // Reemplazar el fragmento actual con el nuevo fragmento
+            navController.navigate(R.id.editFragment)
         }
 
 

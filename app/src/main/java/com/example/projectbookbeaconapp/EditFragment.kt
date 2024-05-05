@@ -39,6 +39,10 @@ class EditFragment : Fragment() {
             findNavController().navigate(EditFragmentDirections.actionEditFragmentToProfileFragment())
         }
 
+        binding.actualizarDatos.setOnClickListener{
+            findNavController().navigate(EditFragmentDirections.actionEditFragmentToProfileFragment())
+        }
+
         return binding.root
     }
 
