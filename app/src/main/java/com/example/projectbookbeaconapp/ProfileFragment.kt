@@ -1,5 +1,6 @@
 package com.example.projectbookbeaconapp
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -10,13 +11,19 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.projectbookbeaconapp.adapters.SavedBooksAdapter
 import com.example.projectbookbeaconapp.databinding.FragmentProfileBinding
+import com.example.projectbookbeaconapp.providers.UserBook
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class ProfileFragment : Fragment() {
+    private lateinit var binding : FragmentProfileBinding
     private lateinit var tvUserName: TextView
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
@@ -25,14 +32,12 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_profile, container, false)
-        tvUserName = view.findViewById(R.id.tvUserName)
-        return view
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
 
@@ -47,34 +52,70 @@ class ProfileFragment : Fragment() {
                     // Obtener el nombre de usuario del documento
                     val userName = document.getString("usuario")
                     // Establecer el nombre de usuario en el TextView
-                    tvUserName.text = userName
+                    binding.tvUserName.text = userName
                 } else {
-                    Log.d(TAG, "No such document")
+                    Log.d(ContentValues.TAG, "No such document")
                 }
             }
             .addOnFailureListener { exception ->
-                Log.d(TAG, "get failed with ", exception)
+                Log.d(ContentValues.TAG, "get failed with ", exception)
             }
 
-        // Configurar el botón de cerrar sesión
-        val btnLogout: Button = view.findViewById(R.id.btnLogout)
-        btnLogout.setOnClickListener {
-            // Aquí deberías manejar la lógica para cerrar sesión
+        binding.btnLogout.setOnClickListener {
             auth.signOut()
-            // Crear un Intent para iniciar MainActivity
-            val intent = Intent(activity, MainActivity::class.java)
-
-            // Iniciar MainActivity
-            startActivity(intent)
-
-            // Finalizar la actividad actual (opcional)
-            activity?.finish()
-
+            findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToFirstFragment())
         }
-    }
 
-    companion object {
-        private const val TAG = "ProfileFragment"
+        binding.imgEdit.setOnClickListener {
+            findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToEditFragment())
+        }
+
+
+        binding.btActualizarLibros.setOnClickListener{
+            if (uid != null) {
+                // Obtener la referencia a la colección "usuarios" y al documento con el UID del usuario actual
+                val userRef = firestore.collection("usuarios").document(uid)
+
+                // Obtener la referencia a la subcolección "libros" del documento del usuario actual
+                val librosRef = userRef.collection("libros")
+
+                // Configurar un Listener para escuchar los cambios en la colección "libros"
+                librosRef.addSnapshotListener { snapshot, exception ->
+                    if (exception != null) {
+                        // Manejar cualquier error que pueda ocurrir al obtener los libros
+                        Log.e(ContentValues.TAG, "Error al obtener los libros: ", exception)
+                        return@addSnapshotListener
+                    }
+
+                    // Verificar si el snapshot no es nulo y contiene documentos
+                    if (snapshot != null && !snapshot.isEmpty) {
+                        // Crear una lista mutable para almacenar los libros del usuario
+                        val userBooks = mutableListOf<UserBook>()
+
+                        // Iterar sobre los documentos en el snapshot
+                        for (doc in snapshot.documents) {
+                            // Obtener los datos del documento y crear un objeto UserBook
+                            val title = doc.getString("title") ?: ""
+                            val author = doc.getString("author") ?: ""
+                            val genres = doc.getString("genres") ?: ""
+
+                            val userBook = UserBook(title, author, genres)
+
+                            // Agregar el libro a la lista
+                            userBooks.add(userBook)
+                        }
+
+                        // Mostrar los libros en el RecyclerView utilizando el adaptador
+                        val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewSavedBooks)
+                        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                        recyclerView.adapter = SavedBooksAdapter(userBooks)
+                    } else {
+                        // Si no hay libros guardados
+                        Log.d(ContentValues.TAG, "No se encontraron libros guardados")
+                    }
+                }
+            }
+        }
     }
 
 }

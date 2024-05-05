@@ -108,7 +108,14 @@
         android:id="@+id/profileFragment"
         android:name="com.example.projectbookbeaconapp.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_editFragment"
+            app:destination="@id/editFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_firstFragment"
+            app:destination="@id/firstFragment" />
+    </fragment>
     <fragment
         android:id="@+id/genresFragment"
         android:name="com.example.projectbookbeaconapp.GenresFragment"
@@ -132,6 +139,16 @@
         <action
             android:id="@+id/action_authorsFragment_to_navigationFragment"
             app:destination="@id/navigationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="com.example.projectbookbeaconapp.EditFragment"
+        android:label="fragment_edit"
+        tools:layout="@layout/fragment_edit" >
+        <action
+            android:id="@+id/action_editFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 
 </navigation>

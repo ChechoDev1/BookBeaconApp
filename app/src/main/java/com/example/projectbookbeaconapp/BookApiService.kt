@@ -5,6 +5,8 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface BookApiService {
+
     @GET("recomendaciones/{uid}")
     fun getRecommendations(@Path("uid") userId: String): Call<List<BookRecommendation>>
+
 }

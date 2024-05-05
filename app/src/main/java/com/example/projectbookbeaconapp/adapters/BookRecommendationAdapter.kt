@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectbookbeaconapp.BookRecommendation
 import com.example.projectbookbeaconapp.R
-import com.example.projectbookbeaconapp.providers.UserBook
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -51,23 +50,19 @@ class BookRecommendationAdapter(private val books: List<BookRecommendation>) : R
         }
 
         private fun saveBookToFirebase(book: BookRecommendation) {
-            // Aquí guardas el libro en Firebase
             val userId = FirebaseAuth.getInstance().currentUser?.uid
             if (userId != null) {
-                val userBook = UserBook(book.title, book.author, book.genres)
-                val userBooksRef = FirebaseFirestore.getInstance().collection("libros_usuario").document(userId)
-                userBooksRef.set(userBook)
-                    .addOnSuccessListener {
-                        Log.d(TAG, "Libro guardado correctamente en Firebase")
-                        // Aquí puedes mostrar un mensaje de éxito si lo deseas
+                val userBooksRef = FirebaseFirestore.getInstance().collection("usuarios").document(userId).collection("libros")
+                // Aquí agregamos un nuevo documento con un ID autogenerado
+                userBooksRef.add(book)
+                    .addOnSuccessListener { documentReference ->
+                        Log.d(TAG, "Libro guardado correctamente en Firebase con ID: ${documentReference.id}")
                     }
                     .addOnFailureListener { e ->
                         Log.e(TAG, "Error al guardar el libro en Firebase", e)
-                        // Aquí puedes mostrar un mensaje de error si lo deseas
                     }
             } else {
                 Log.e(TAG, "No se pudo obtener el ID del usuario actual")
-                // Aquí puedes mostrar un mensaje de error si lo deseas
             }
         }
 

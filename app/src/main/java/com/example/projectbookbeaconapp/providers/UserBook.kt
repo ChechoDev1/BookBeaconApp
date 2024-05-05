@@ -1,7 +1,7 @@
 package com.example.projectbookbeaconapp.providers
 
 data class UserBook(
-    val title: String,
-    val author: String,
-    val genres: String
+    var Title: String,
+    var Author: String,
+    var genres: String
 )

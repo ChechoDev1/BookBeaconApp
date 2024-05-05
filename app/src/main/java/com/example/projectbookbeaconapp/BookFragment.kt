@@ -31,34 +31,56 @@ class BookFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        // Inflate the layout for this fragment
         _binding = FragmentBookBinding.inflate(inflater, container, false) // Inflar el layout con el binding
-        return binding.root // Devolver la raíz del layout inflado
 
+        return binding.root // Devolver la raíz del layout inflado
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val btnAutores: Button = view.findViewById(R.id.btAutores)
+        val btnGeneros: Button = view.findViewById(R.id.btGeneros)
+
+        btnAutores.setOnClickListener {
+            // Obtener el NavController de la actividad principal
+            val navController = requireActivity().findNavController(R.id.navigationStartFragment)
+
+            // Reemplazar el fragmento actual con el nuevo fragmento
+            navController.navigate(R.id.authorsFragment)
+        }
+
+        btnGeneros.setOnClickListener {
+            // Obtener el NavController de la actividad principal
+            val navController = requireActivity().findNavController(R.id.navigationStartFragment)
+
+            // Reemplazar el fragmento actual con el nuevo fragmento
+            navController.navigate(R.id.genresFragment)
+        }
 
         // Inicializar Firebase Firestore
         firestore = FirebaseFirestore.getInstance()
         // Obtener el ID del usuario actual
         userId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://bookbeaconapp-api.onrender.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        val service = retrofit.create(BookApiService::class.java)
+        // Configurar el botón para generar recomendaciones
+        binding.btGenerarRecomendacion.setOnClickListener {
+            // Realizar la llamada al servicio para obtener las recomendaciones
+            val retrofit = Retrofit.Builder()
+                .baseUrl("https://bookbeaconapp-api.onrender.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+            val service = retrofit.create(BookApiService::class.java)
 
-        val call = service.getRecommendations(userId)
-        call.enqueue(object : Callback<List<BookRecommendation>> {
-            override fun onResponse(call: Call<List<BookRecommendation>>, response: Response<List<BookRecommendation>>) {
-                if (response.isSuccessful) {
-                    val recommendations = response.body()
-                    recommendations?.let {
-                        if (it.isNotEmpty()) {
-                            binding.btGenerarRecomendacion.setOnClickListener {
+            val call = service.getRecommendations(userId)
+            call.enqueue(object : Callback<List<BookRecommendation>> {
+                override fun onResponse(call: Call<List<BookRecommendation>>, response: Response<List<BookRecommendation>>) {
+                    if (response.isSuccessful) {
+                        val recommendations = response.body()
+                        recommendations?.let {
+                            if (it.isNotEmpty()) {
                                 // Verificar si el usuario tiene géneros y autores definidos
                                 firestore.collection("users").document(userId).get()
                                     .addOnSuccessListener { document ->
@@ -87,36 +109,19 @@ class BookFragment : Fragment() {
                                     }
                             }
                         }
+                        Log.i("recomendacion","todo bien!")
+
+                    } else {
+                        Log.e("recomendacion", "Error en la solicitud: ${response.code()}")
                     }
-                    Log.i("recomendacion","todo bien!")
-
-                } else {
-                    Log.e("recomendacion", "Error en la solicitud: ${response.code()}")
                 }
-            }
 
-            override fun onFailure(call: Call<List<BookRecommendation>>, t: Throwable) {
-                // Manejar el fallo de la solicitud
-            }
-        })
-        val btnAutores: Button = view.findViewById(R.id.btAutores)
-        val btnGeneros: Button = view.findViewById(R.id.btGeneros)
-
-        btnAutores.setOnClickListener {
-            // Obtener el NavController de la actividad principal
-            val navController = requireActivity().findNavController(R.id.navigationStartFragment)
-
-            // Reemplazar el fragmento actual con el nuevo fragmento
-            navController.navigate(R.id.authorsFragment)
+                override fun onFailure(call: Call<List<BookRecommendation>>, t: Throwable) {
+                    // Manejar el fallo de la solicitud
+                }
+            })
         }
 
-        btnGeneros.setOnClickListener {
-            // Obtener el NavController de la actividad principal
-            val navController = requireActivity().findNavController(R.id.navigationStartFragment)
-
-            // Reemplazar el fragmento actual con el nuevo fragmento
-            navController.navigate(R.id.genresFragment)
-        }
 
     }
 }
