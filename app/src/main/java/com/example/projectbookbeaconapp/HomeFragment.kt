@@ -1,6 +1,8 @@
 package com.example.projectbookbeaconapp
 
 import android.annotation.SuppressLint
+import android.content.ContentValues.TAG
+import android.icu.text.CaseMap.Title
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,6 +19,7 @@ import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.QuerySnapshot
+import com.google.firebase.firestore.toObject
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
@@ -32,7 +35,7 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        // Obtener una referencia a LibrosView desde el layout inflado
+        //Obtener una referencia a LibrosView desde el layout inflado
         val recyclerView = binding.LibrosView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
@@ -45,47 +48,39 @@ class HomeFragment : Fragment() {
         recyclerView.adapter = librosAdapter
         eventChangeListener()
 
+
         return view
     }
 
-    private fun eventChangeListener(){
+    private fun eventChangeListener() {
 
         firestore = FirebaseFirestore.getInstance()
 
-        // Prueba de lectura de un documento específico
-        firestore.collection("Libros_imagenes").document("10")
-            .get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    Log.d("Firestore Success", "DocumentSnapshot data: ${document.data}")
-                } else {
-                    Log.d("Firestore Error", "No such document")
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d("Firestore Error", "get failed with ", exception)
-            }
-
-
-        firestore.collection("Libros_imagenes").addSnapshotListener(object : EventListener<QuerySnapshot>{
-            @SuppressLint("NotifyDataSetChanged")
-            override fun onEvent(
-                value: QuerySnapshot?, error: FirebaseFirestoreException?){
-                if (error != null){
-                    Log.e("Firestore Error",error.message.toString())
-                    return
-                }
-                for (dc : DocumentChange in value?.documentChanges!!){
-                    if(dc.type == DocumentChange.Type.ADDED){
-                        librosArrayList.add(dc.document.toObject(libros_imagenes::class.java))
+        firestore.collection("libros_imagenes")
+            .addSnapshotListener(object : EventListener<QuerySnapshot> {
+                override fun onEvent(
+                    value: QuerySnapshot?, error: FirebaseFirestoreException?
+                ) {
+                    if (error != null) {
+                        Log.e("Firestore Error", error.message.toString())
+                        return
                     }
+                    for (dc: DocumentChange in value?.documentChanges!!) {
+                        val data = dc.document.data["0"]as Map<*, *>
+                        if (dc.type == DocumentChange.Type.ADDED) {
+                            // Extrae los atributos que necesitas del mapa
+                            val title = data["Title"] as? String ?: ""
+                            val genres = data["genres"] as? String ?: ""
+                            val author = data["Author"] as? String ?: ""
+                            val link = data["Link"] as? String ?: ""
+
+                            val libroImagenes = libros_imagenes(title, genres, author, link)
+
+                            librosArrayList.add(libroImagenes)
+                            Log.i("Info", libroImagenes.toString())
+                        }
+                    break}
                 }
-
-                librosAdapter.notifyDataSetChanged()
-
-            }
-        })
-
+            })
     }
-
 }

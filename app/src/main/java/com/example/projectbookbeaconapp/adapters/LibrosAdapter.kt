@@ -13,29 +13,31 @@ import com.example.projectbookbeaconapp.providers.libros_imagenes
 class LibrosAdapter(private val libroslist: ArrayList<libros_imagenes>) : RecyclerView.Adapter<LibrosAdapter.LibrosViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LibrosViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_libro, parent, false)
-        return LibrosViewHolder(itemView)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_libro, parent, false)
+        return LibrosViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: LibrosViewHolder, position: Int) {
-        val librosImagenes : libros_imagenes = libroslist[position]
-
-        holder.Title.text = librosImagenes.Title
-        holder.Author.text = librosImagenes.Author
-        holder.genres.text = librosImagenes.genres
-        Glide.with(holder.itemView.context).load(librosImagenes.Link).into(holder.Link)
+        val libroslist = libroslist[position]
+        holder.bind(libroslist)
     }
 
     override fun getItemCount(): Int {
         return libroslist.size
     }
 
-    class LibrosViewHolder(itemView : View):RecyclerView.ViewHolder(itemView) {
+    inner class LibrosViewHolder(itemView : View):RecyclerView.ViewHolder(itemView) {
 
         val Title : TextView = itemView.findViewById(R.id.tvLibroName)
         val Author : TextView = itemView.findViewById(R.id.tvAutor)
         val genres : TextView = itemView.findViewById(R.id.tvGenero)
         val Link : ImageView = itemView.findViewById(R.id.ivLibro)
+        fun bind(librosImagenes: libros_imagenes) {
+            Title.text = librosImagenes.Title
+            Author.text = librosImagenes.Author
+            genres.text = librosImagenes.genres
+            Glide.with(Link.context).load(librosImagenes.Link).into(Link)
+        }
     }
 
 }

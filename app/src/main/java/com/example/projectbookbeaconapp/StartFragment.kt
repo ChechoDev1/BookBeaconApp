@@ -13,20 +13,17 @@ import com.google.firebase.auth.FirebaseAuth
 
 class StartFragment : Fragment(){
     private lateinit var binding: FragmentStartBinding
-    private lateinit var recyclerView: RecyclerView
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val auth = FirebaseAuth.getInstance()
+        FirebaseAuth.getInstance()
 
         // Inflate the layout for this fragment
         binding = FragmentStartBinding.inflate(inflater, container, false) // Se infla el binding
         return binding.root // Se retorna la raíz del binding)
-
-
 
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

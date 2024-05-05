@@ -1,4 +1,3 @@
-
 package com.example.projectbookbeaconapp
 
 import com.google.gson.annotations.SerializedName
