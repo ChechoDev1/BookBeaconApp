@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 
@@ -27,6 +28,14 @@ class RegisterFragment2 : Fragment() {
         val nombre = args.nombre
         val correo = args.correo
 
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // No realizar ninguna acción al presionar el botón de retroceso
+            }
+        }
+
+        // Agregar el callback al controlador de retroceso
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
         imgBack2.setOnClickListener {
             findNavController().navigate(RegisterFragment2Directions.actionThirdFragmentToSecondFragment())

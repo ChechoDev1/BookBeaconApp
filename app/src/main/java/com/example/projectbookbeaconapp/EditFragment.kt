@@ -31,7 +31,9 @@ class EditFragment : Fragment() {
         // Obtener uid
         uid = auth.currentUser?.uid ?: ""
 
-
+        binding.actualizarDatos.setOnClickListener{
+            actualizarDatosUsuario()
+        }
 
         return binding.root
     }
@@ -49,7 +51,6 @@ class EditFragment : Fragment() {
             .update(userData)
             .addOnSuccessListener {
                 showAlert("Datos actualizados correctamente\nEs posible que no se puedan ver los cambios realizados al instante")
-                findNavController().navigate(EditFragmentDirections.actionEditFragmentToProfileFragment())
                 Log.d("update", "Todo correcto")
             }
             .addOnFailureListener { e ->
@@ -70,10 +71,6 @@ class EditFragment : Fragment() {
             findNavController().navigate(EditFragmentDirections.actionEditFragmentToNavigationFragment())
         }
 
-        binding.actualizarDatos.setOnClickListener{
-            findNavController().navigate(EditFragmentDirections.actionEditFragmentToNavigationFragment())
-            actualizarDatosUsuario()
-        }
 
     }
 

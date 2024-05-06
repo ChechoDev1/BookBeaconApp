@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.firebase.auth.FirebaseAuth
@@ -40,6 +41,15 @@ class RegisterFragment3 : Fragment() {
         val correo = args.correo
         val usuario = args.usuario
         val contraseña = args.contrasena
+
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // No realizar ninguna acción al presionar el botón de retroceso
+            }
+        }
+
+        // Agregar el callback al controlador de retroceso
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
         // Manejar el evento de clic en el botón de registro
         binding.btBotonSiguiente6.setOnClickListener {
@@ -86,6 +96,8 @@ class RegisterFragment3 : Fragment() {
                 }
         }
     }
+
+
     companion object {
         private const val TAG = "RegisterFragment3"
     }
