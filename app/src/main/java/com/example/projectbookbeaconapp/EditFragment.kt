@@ -6,7 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.projectbookbeaconapp.databinding.FragmentEditBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -33,14 +36,6 @@ class EditFragment : Fragment() {
 
         binding.actualizarDatos.setOnClickListener {
             actualizarDatosUsuario()
-        }
-
-        binding.imgBack4.setOnClickListener{
-            findNavController().navigate(EditFragmentDirections.actionEditFragmentToProfileFragment())
-        }
-
-        binding.actualizarDatos.setOnClickListener{
-            findNavController().navigate(EditFragmentDirections.actionEditFragmentToProfileFragment())
         }
 
         return binding.root
@@ -72,6 +67,21 @@ class EditFragment : Fragment() {
             .setMessage(message)
             .setPositiveButton("Aceptar", null)
             .show()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val imBack: Button = view.findViewById(R.id.imgBack)
+        val actualizarDatos: ImageView = view.findViewById(R.id.actualizarDatos)
+
+        binding.imgBack4.setOnClickListener{
+            findNavController().navigate(EditFragmentDirections.actionEditFragmentToNavigationFragment())
+        }
+
+        binding.actualizarDatos.setOnClickListener{
+            findNavController().navigate(EditFragmentDirections.actionEditFragmentToNavigationFragment())
+        }
+
     }
 
 }

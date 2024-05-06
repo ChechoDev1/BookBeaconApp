@@ -52,6 +52,7 @@ class BookFragment : Fragment() {
             navController.navigate(R.id.authorsFragment)
         }
 
+
         btnGeneros.setOnClickListener {
             // Obtener el NavController de la actividad principal
             val navController = requireActivity().findNavController(R.id.navigationStartFragment)
