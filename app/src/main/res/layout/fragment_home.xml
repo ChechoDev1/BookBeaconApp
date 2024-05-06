@@ -46,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="33dp"
                 android:layout_marginEnd="16dp"
-                android:background="@drawable/search_button"
+                android:backgroundTint="@color/colorPrimary"
                 android:text="@string/G_Accion"
                 android:textColor="@color/black"
                 android:textSize="12sp" />

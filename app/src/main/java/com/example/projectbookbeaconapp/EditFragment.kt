@@ -31,17 +31,7 @@ class EditFragment : Fragment() {
         // Obtener uid
         uid = auth.currentUser?.uid ?: ""
 
-        binding.actualizarDatos.setOnClickListener {
-            actualizarDatosUsuario()
-        }
 
-        binding.imgBack4.setOnClickListener{
-            findNavController().navigate(EditFragmentDirections.actionEditFragmentToProfileFragment())
-        }
-
-        binding.actualizarDatos.setOnClickListener{
-            findNavController().navigate(EditFragmentDirections.actionEditFragmentToProfileFragment())
-        }
 
         return binding.root
     }
@@ -72,6 +62,19 @@ class EditFragment : Fragment() {
             .setMessage(message)
             .setPositiveButton("Aceptar", null)
             .show()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.imgBack4.setOnClickListener{
+            findNavController().navigate(EditFragmentDirections.actionEditFragmentToNavigationFragment())
+        }
+
+        binding.actualizarDatos.setOnClickListener{
+            findNavController().navigate(EditFragmentDirections.actionEditFragmentToNavigationFragment())
+            actualizarDatosUsuario()
+        }
+
     }
 
 }
