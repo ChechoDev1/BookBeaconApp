@@ -22,6 +22,8 @@
         android:id="@+id/SearchText"
         android:layout_width="match_parent"
         android:layout_height="35dp"
+        android:maxLines="1"
+        android:singleLine="true"
         android:layout_marginTop="60dp"
         android:background="@drawable/search_bar"
         android:hint="@string/busca_un_libro"

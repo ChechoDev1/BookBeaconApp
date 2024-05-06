@@ -36,6 +36,8 @@
         android:drawableStart="@drawable/vector_person"
         android:drawableTint="@color/colorPrimary"
         android:hint="@string/hint_nombre_completo"
+        android:maxLines="1"
+        android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitulo1" />
@@ -49,9 +51,11 @@
         android:drawableStart="@drawable/vector_correo"
         android:drawableTint="@color/colorPrimary"
         android:hint="@string/hint_email"
+        android:maxLines="1"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etRegisterName"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/etRegisterName" />
 
     <Button
         android:id="@+id/btBotonSiguiente"
@@ -60,9 +64,9 @@
         android:layout_margin="@dimen/margin_default"
         android:backgroundTint="@color/colorPrimary"
         android:text="@string/button_siguiente"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/etRegisterEmail" />
 
 
@@ -78,9 +82,9 @@
 
     <TextView
         android:id="@+id/tvTexto4"
-        android:layout_margin="@dimen/margin_default"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_default"
         android:text="@string/accede"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"

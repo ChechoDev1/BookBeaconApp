@@ -118,10 +118,12 @@ class ProfileFragment : Fragment() {
                             // Agregar el libro a la lista
                             userBooks.add(userBook)
                         }
-
                         // Mostrar los libros en el RecyclerView utilizando el adaptador
                         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewSavedBooks)
-                        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                        //recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                        if (isAdded) {
+                            recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                        }
                         recyclerView.adapter = SavedBooksAdapter(userBooks)
                     } else {
                         // Si no hay libros guardados

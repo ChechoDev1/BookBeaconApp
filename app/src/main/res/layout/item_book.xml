@@ -83,6 +83,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:layout_marginStart="10dp"
         android:text="Agregar"
+        android:textColor="@color/white"
         android:textSize="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

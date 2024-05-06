@@ -17,7 +17,7 @@
         android:id="@+id/tvTitulo2"
         style="@style/Titulo"
         android:layout_width="@dimen/width_title"
-        android:layout_height="@dimen/heigh_title"
+        android:layout_height="wrap_content"
         android:layout_marginTop="55dp"
         android:text="@string/como_quieres_acceder"
         android:textColor="@color/colorPrimary"
@@ -30,6 +30,8 @@
     <EditText
         android:id="@+id/etRegisterUsername"
         style="@style/Prueba"
+        android:maxLines="1"
+        android:singleLine="true"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_default"
@@ -43,6 +45,8 @@
     <EditText
         android:id="@+id/etRegisterPassword"
         style="@style/Prueba"
+        android:maxLines="1"
+        android:singleLine="true"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_default"

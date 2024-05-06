@@ -5,6 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectbookbeaconapp.BookRecommendation
 import com.example.projectbookbeaconapp.R
@@ -57,6 +59,7 @@ class BookRecommendationAdapter(private val books: List<BookRecommendation>) : R
                 userBooksRef.add(book)
                     .addOnSuccessListener { documentReference ->
                         Log.d(TAG, "Libro guardado correctamente en Firebase con ID: ${documentReference.id}")
+                        Toast.makeText(itemView.context, "Libro guardado", Toast.LENGTH_SHORT).show()
                     }
                     .addOnFailureListener { e ->
                         Log.e(TAG, "Error al guardar el libro en Firebase", e)
@@ -65,6 +68,5 @@ class BookRecommendationAdapter(private val books: List<BookRecommendation>) : R
                 Log.e(TAG, "No se pudo obtener el ID del usuario actual")
             }
         }
-
     }
 }

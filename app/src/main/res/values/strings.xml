@@ -7,10 +7,10 @@
     <string name="button_siguiente">Siguiente</string>
     <string name="hint_email">correo_ejemplo@gmail.com</string>
     <string name="hint_nombre_completo">Nombre completo</string>
-    <string name="titulo1">Empecemos con lo basico</string>
+    <string name="titulo1">¡Empecemos con lo básico!</string>
     <string name="ya_tienes_una_cuenta">¿Ya tienes una cuenta?</string>
     <string name="accede">Accede!</string>
-    <string name="como_quieres_acceder">¿Cómo quieres acceder</string>
+    <string name="como_quieres_acceder">Ingresa tu usuario y contraseña</string>
     <string name="hint_usuario_registro">Nombre de usuario</string>
     <string name="cuentanos_un_poco_de_ti">Cuéntanos un poco de ti:</string>
     <string name="escoge_tus_5_generos_favoritos">Escoge tus 5 generos favoritos:</string>
@@ -20,6 +20,8 @@
     <string name="boton_finalizar">Finalizar</string>
     <string name="finalizacion">¡Tu perfil ha sido creado!</string>
     <string name="bienvenida">Bienvenido a Book Beacon</string>
+    <string name="estas_seguro_de_continuar">¿Estás seguro de continuar?</string>
+    <string name="pulsa_el_boton_para_finalizar">Pulsa el botón para finalizar la creación de tu cuenta</string>
 
     <!-- Sección de inicio -->
     <string name="opcion1">Home</string>
@@ -58,4 +60,6 @@
     <string name="actualizar_libros">Actualizar libros</string>
     <string name="charles_dickens">Charles Dickens</string>
     <string name="escoge_tus_5_autores_favoritos">Escoge tus 5 autores favoritos</string>
+    <string name="correo_electronico">Correo electrónico</string>
+    <string name="finalizar">Finalizar</string>
 </resources>

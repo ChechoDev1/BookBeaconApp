@@ -35,7 +35,7 @@
         android:layout_margin="@dimen/margin_default"
         android:drawableStart="@drawable/vector_person"
         android:drawableTint="@color/colorPrimary"
-        android:hint="@string/hint_usuario"
+        android:hint="@string/correo_electronico"
         android:maxLines="1"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,6 +51,9 @@
         android:drawableStart="@drawable/vector_candado"
         android:drawableTint="@color/colorPrimary"
         android:hint="@string/hint_password"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etLoginEmail" />

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".RegisterFinal">
+    tools:context=".RegisterFragment3">
 
     <TextView
         android:id="@+id/tvTitulo5"
@@ -12,7 +12,7 @@
         android:layout_width="@dimen/width_title"
         android:layout_height="@dimen/heigh_title"
         android:layout_marginTop="112dp"
-        android:text="@string/finalizacion"
+        android:text="@string/estas_seguro_de_continuar"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
@@ -28,7 +28,7 @@
         android:layout_width="@dimen/width_title"
         android:layout_height="@dimen/heigh_title"
         android:layout_marginTop="216dp"
-        android:text="@string/bienvenida"
+        android:text="@string/pulsa_el_boton_para_finalizar"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
@@ -45,7 +45,7 @@
         android:layout_margin="30dp"
         android:layout_marginTop="68dp"
         android:backgroundTint="@color/colorPrimary"
-        android:text="@string/button_siguiente"
+        android:text="@string/finalizar"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

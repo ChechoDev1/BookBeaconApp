@@ -90,7 +90,9 @@ class BookFragment : Fragment() {
                                             if (generos != null && autores != null) {
                                                 // Si ambos campos existen, proceder a generar las recomendaciones
                                                 val recyclerView: RecyclerView = view.findViewById(R.id.recyclerRecomendation)
-                                                recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                                                if (isAdded) {
+                                                    recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                                                }
                                                 val adapter = recommendations.let { it1 -> BookRecommendationAdapter(it1) }
                                                 recyclerView.adapter = adapter
                                             } else {
