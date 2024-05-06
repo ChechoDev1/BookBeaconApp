@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.projectbookbeaconapp.databinding.FragmentEditBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -54,7 +53,6 @@ class EditFragment : Fragment() {
             .update(userData)
             .addOnSuccessListener {
                 showAlert("Datos actualizados correctamente\nEs posible que no se puedan ver los cambios realizados al instante")
-                findNavController().navigate(EditFragmentDirections.actionEditFragmentToProfileFragment())
                 Log.d("update", "Todo correcto")
             }
             .addOnFailureListener { e ->
@@ -71,14 +69,8 @@ class EditFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val imBack: Button = view.findViewById(R.id.imgBack)
-        val actualizarDatos: ImageView = view.findViewById(R.id.actualizarDatos)
 
         binding.imgBack4.setOnClickListener{
-            findNavController().navigate(EditFragmentDirections.actionEditFragmentToNavigationFragment())
-        }
-
-        binding.actualizarDatos.setOnClickListener{
             findNavController().navigate(EditFragmentDirections.actionEditFragmentToNavigationFragment())
         }
 

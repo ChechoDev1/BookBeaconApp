@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectbookbeaconapp.adapters.SavedBooksAdapter
+import com.example.projectbookbeaconapp.databinding.FragmentLoginBinding
 import com.example.projectbookbeaconapp.databinding.FragmentProfileBinding
 import com.example.projectbookbeaconapp.providers.UserBook
 import com.google.firebase.auth.FirebaseAuth
@@ -121,7 +122,9 @@ class ProfileFragment : Fragment() {
 
                         // Mostrar los libros en el RecyclerView utilizando el adaptador
                         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewSavedBooks)
-                        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                        if (isAdded) {
+                            recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                        }
                         recyclerView.adapter = SavedBooksAdapter(userBooks)
                     } else {
                         // Si no hay libros guardados
@@ -131,5 +134,4 @@ class ProfileFragment : Fragment() {
             }
         }
     }
-
 }
