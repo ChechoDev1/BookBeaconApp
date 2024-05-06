@@ -46,7 +46,7 @@
             <Button
                 android:id="@+id/Accion"
                 android:layout_width="wrap_content"
-                android:layout_height="33dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/colorPrimary"
                 android:text="@string/G_Accion"
@@ -56,7 +56,7 @@
             <Button
                 android:id="@+id/Aventura"
                 android:layout_width="wrap_content"
-                android:layout_height="33dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/colorPrimary"
                 android:text="@string/G_Aventura"
@@ -66,7 +66,7 @@
             <Button
                 android:id="@+id/Thriller"
                 android:layout_width="wrap_content"
-                android:layout_height="33dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/colorPrimary"
                 android:text="@string/G_Thriller"
@@ -76,7 +76,7 @@
             <Button
                 android:id="@+id/Drama"
                 android:layout_width="wrap_content"
-                android:layout_height="33dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/colorPrimary"
                 android:text="@string/G_Drama"
@@ -102,7 +102,7 @@
             <Button
                 android:id="@+id/Comedia"
                 android:layout_width="wrap_content"
-                android:layout_height="33dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/colorPrimary"
                 android:text="@string/G_Comedia"
@@ -112,7 +112,7 @@
             <Button
                 android:id="@+id/Suspenso"
                 android:layout_width="wrap_content"
-                android:layout_height="33dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/colorPrimary"
                 android:text="@string/G_Suspenso"
@@ -122,7 +122,7 @@
             <Button
                 android:id="@+id/Terror"
                 android:layout_width="wrap_content"
-                android:layout_height="33dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/colorPrimary"
                 android:text="@string/G_Terror"
@@ -132,7 +132,7 @@
             <Button
                 android:id="@+id/Ficcion"
                 android:layout_width="wrap_content"
-                android:layout_height="33dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/colorPrimary"
                 android:text="@string/G_Ficcion"
