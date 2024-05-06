@@ -26,7 +26,7 @@
         android:id="@+id/tvTitulo6"
         style="@style/Titulo"
         android:layout_width="@dimen/width_title"
-        android:layout_height="@dimen/heigh_title"
+        android:layout_height="wrap_content"
         android:layout_marginTop="216dp"
         android:text="@string/pulsa_el_boton_para_finalizar"
         android:textAlignment="center"

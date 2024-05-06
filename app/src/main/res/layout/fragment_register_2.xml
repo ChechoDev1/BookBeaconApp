@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <ImageButton
         android:id="@+id/imgBack2"
@@ -25,19 +25,19 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgBack2"/>
+        app:layout_constraintTop_toBottomOf="@+id/imgBack2" />
 
     <EditText
         android:id="@+id/etRegisterUsername"
         style="@style/Prueba"
-        android:maxLines="1"
-        android:singleLine="true"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_default"
         android:drawableStart="@drawable/vector_person"
         android:drawableTint="@color/colorPrimary"
         android:hint="@string/hint_usuario_registro"
+        android:maxLines="1"
+        android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitulo2" />
@@ -45,17 +45,18 @@
     <EditText
         android:id="@+id/etRegisterPassword"
         style="@style/Prueba"
-        android:maxLines="1"
-        android:singleLine="true"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_default"
         android:drawableStart="@drawable/vector_candado"
         android:drawableTint="@color/colorPrimary"
         android:hint="@string/hint_contraseña"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etRegisterUsername"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/etRegisterUsername" />
 
     <Button
         android:id="@+id/btBotonSiguiente2"
@@ -64,8 +65,8 @@
         android:layout_margin="@dimen/margin_default"
         android:backgroundTint="@color/colorPrimary"
         android:text="@string/button_siguiente"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/etRegisterPassword" />
 </androidx.constraintlayout.widget.ConstraintLayout>
