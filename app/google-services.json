@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "59555302530",
-    "project_id": "bookbeacon-2024",
-    "storage_bucket": "bookbeacon-2024.appspot.com"
+    "project_number": "785163067979",
+    "project_id": "bookbeaconv2-2024",
+    "storage_bucket": "bookbeaconv2-2024.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:59555302530:android:1166fe0f59fba17f20b89b",
+        "mobilesdk_app_id": "1:785163067979:android:0ca4cd5343f381205663ce",
         "android_client_info": {
           "package_name": "com.example.projectbookbeaconapp"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCeJe05diVtx1QOoX8Pyxc0svcfwavZLgI"
+          "current_key": "AIzaSyCjW9YkBGCnPbuJdwVyGyTT7IAim8dt0c0"
         }
       ],
       "services": {

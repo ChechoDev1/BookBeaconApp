@@ -130,10 +130,12 @@ class GenresFragment : Fragment() {
             .addOnSuccessListener {
                 // Manejar el éxito de la actualización
                 showAlert("Géneros actualizados correctamente.")
+                Log.d("Firestore", "Actualización de géneros exitosa.")
             }
             .addOnFailureListener { e ->
                 // Manejar el fallo de la actualización
                 showAlert("Error al actualizar los géneros: ${e.message}")
+                Log.e("Firestore", "Error al actualizar los géneros: ${e.message}", e)
             }
     }
 

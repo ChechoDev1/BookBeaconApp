@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -45,20 +44,22 @@ class BookFragment : Fragment() {
         // Obtener el ID del usuario actual
         userId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://bookbeaconapp-api.onrender.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        val service = retrofit.create(BookApiService::class.java)
+        // Configurar el botón para generar recomendaciones
+        binding.btGenerarRecomendacion.setOnClickListener {
+            // Realizar la llamada al servicio para obtener las recomendaciones
+            val retrofit = Retrofit.Builder()
+                .baseUrl("https://bookbeaconapp-api.onrender.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+            val service = retrofit.create(BookApiService::class.java)
 
-        val call = service.getRecommendations(userId)
-        call.enqueue(object : Callback<List<BookRecommendation>> {
-            override fun onResponse(call: Call<List<BookRecommendation>>, response: Response<List<BookRecommendation>>) {
-                if (response.isSuccessful) {
-                    val recommendations = response.body()
-                    recommendations?.let {
-                        if (it.isNotEmpty()) {
-                            binding.btGenerarRecomendacion.setOnClickListener {
+            val call = service.getRecommendations(userId)
+            call.enqueue(object : Callback<List<BookRecommendation>> {
+                override fun onResponse(call: Call<List<BookRecommendation>>, response: Response<List<BookRecommendation>>) {
+                    if (response.isSuccessful) {
+                        val recommendations = response.body()
+                        recommendations?.let {
+                            if (it.isNotEmpty()) {
                                 // Verificar si el usuario tiene géneros y autores definidos
                                 firestore.collection("users").document(userId).get()
                                     .addOnSuccessListener { document ->
@@ -87,26 +88,30 @@ class BookFragment : Fragment() {
                                     }
                             }
                         }
+                        Log.i("recomendacion","todo bien!")
+
+                    } else {
+                        Log.e("recomendacion", "Error en la solicitud: ${response.code()}")
                     }
-                    Log.i("recomendacion","todo bien!")
-
-                } else {
-                    Log.e("recomendacion", "Error en la solicitud: ${response.code()}")
                 }
-            }
 
-            override fun onFailure(call: Call<List<BookRecommendation>>, t: Throwable) {
-                // Manejar el fallo de la solicitud
-            }
-        })
+                override fun onFailure(call: Call<List<BookRecommendation>>, t: Throwable) {
+                    // Manejar el fallo de la solicitud
+                }
+            })
+        }
 
+        // Configurar el botón para actualizar géneros
         binding.btGeneros.setOnClickListener {
             findNavController().navigate(BookFragmentDirections.actionBookFragmentToGenresFragment())
         }
+
+        // Configurar el botón para actualizar autores
         binding.btAutores.setOnClickListener {
             findNavController().navigate(BookFragmentDirections.actionBookFragmentToAuthorsFragment())
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
