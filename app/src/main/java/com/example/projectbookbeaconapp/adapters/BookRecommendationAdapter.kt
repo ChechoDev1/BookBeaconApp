@@ -1,4 +1,5 @@
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +24,27 @@ class BookRecommendationAdapter(private val books: List<BookRecommendation>) : R
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
         val book = books[position]
         holder.bind(book)
+
+        holder.itemView.findViewById<Button>(R.id.detalles).setOnClickListener {
+            showBookDetailsDialog(book, holder.itemView.context)
+        }
+    }
+
+    // Método para mostrar el diálogo de detalles del libro
+    private fun showBookDetailsDialog(book: BookRecommendation, context: Context) {
+        val dialogView = LayoutInflater.from(context).inflate(R.layout.fragment_details, null)
+
+        // Inicializar los elementos de la ventana emergente con los detalles del libro
+        dialogView.findViewById<TextView>(R.id.tvTitle).text = book.title
+        dialogView.findViewById<TextView>(R.id.tvAuthors).text = book.author
+        dialogView.findViewById<TextView>(R.id.tvGenres).text = book.genres
+
+        AlertDialog.Builder(context)
+            .setView(dialogView)
+            .setPositiveButton("Cerrar") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
     }
 
     override fun getItemCount(): Int {

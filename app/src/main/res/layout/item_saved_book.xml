@@ -19,6 +19,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         android:textSize="8dp"
         android:text="titulo"
         android:maxLines="1"
@@ -26,7 +27,7 @@
         app:layout_constraintStart_toEndOf="@+id/tvTitle"
         app:layout_constraintTop_toTopOf="@+id/tvTitle"
         app:layout_constraintBottom_toBottomOf="@id/tvTitle"
-        app:layout_constraintEnd_toStartOf="@+id/agregar"/>
+        app:layout_constraintEnd_toStartOf="@id/detalles"/>
     <TextView
         android:id="@+id/tvAuthor"
         android:layout_width="90dp"
@@ -50,7 +51,7 @@
         app:layout_constraintStart_toEndOf="@+id/tvAuthor"
         app:layout_constraintTop_toTopOf="@id/tvAuthor"
         app:layout_constraintBottom_toBottomOf="@id/tvAuthor"
-        app:layout_constraintEnd_toStartOf="@+id/agregar"/>
+        app:layout_constraintEnd_toStartOf="@id/detalles"/>
     <TextView
         android:id="@+id/tvGenres"
         android:layout_width="90dp"
@@ -73,18 +74,22 @@
         app:layout_constraintStart_toEndOf="@+id/tvGenres"
         app:layout_constraintTop_toTopOf="@id/tvGenres"
         app:layout_constraintBottom_toBottomOf="@id/tvGenres"
-        app:layout_constraintEnd_toStartOf="@+id/agregar"/>
+        app:layout_constraintEnd_toStartOf="@id/detalles"/>
 
-    <TextView
-        android:id="@+id/agregar"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
+    <Button
+        android:id="@+id/detalles"
+        android:layout_width="63dp"
+        android:layout_height="29dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
-        android:textSize="8dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="Detalles"
+        android:textColor="@color/white"
+        android:textSize="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

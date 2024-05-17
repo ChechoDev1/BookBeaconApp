@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <TextView
         android:id="@+id/tvTitle"
-        android:layout_width="90dp"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
         android:text="Titulo: "
         android:textSize="15dp"
@@ -18,9 +18,10 @@
         android:id="@+id/titleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="12dp"
         android:textSize="8dp"
-        android:text="titulo"
+        android:text="HOLAAAA"
         android:maxLines="1"
         android:ellipsize="end"
         app:layout_constraintStart_toEndOf="@+id/tvTitle"
@@ -29,7 +30,7 @@
         app:layout_constraintEnd_toStartOf="@+id/agregar"/>
     <TextView
         android:id="@+id/tvAuthor"
-        android:layout_width="90dp"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
         android:textSize="15dp"
         android:textStyle="bold"
@@ -41,7 +42,7 @@
         android:id="@+id/authorTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="5dp"
         android:textSize="8dp"
         android:text="HOLAAAA"
         android:maxLines="1"
@@ -53,7 +54,7 @@
         app:layout_constraintEnd_toStartOf="@+id/agregar"/>
     <TextView
         android:id="@+id/tvGenres"
-        android:layout_width="90dp"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
         android:textSize="15dp"
         android:textStyle="bold"
@@ -64,7 +65,7 @@
         android:id="@+id/genresTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="5dp"
         android:layout_marginEnd="12dp"
         android:textSize="8dp"
         android:text="HOLAAAA"
@@ -77,14 +78,27 @@
 
     <Button
         android:id="@+id/agregar"
-        android:layout_width="94dp"
-        android:layout_height="35dp"
+        android:layout_width="63dp"
+        android:layout_height="29dp"
         android:layout_marginEnd="10dp"
         android:backgroundTint="@color/colorPrimary"
         android:layout_marginStart="10dp"
         android:text="Agregar"
         android:textColor="@color/white"
-        android:textSize="8dp"
+        android:textSize="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/detalles"/>
+
+    <Button
+        android:id="@+id/detalles"
+        android:layout_width="63dp"
+        android:layout_height="29dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="Detalles"
+        android:textColor="@color/white"
+        android:textSize="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

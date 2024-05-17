@@ -31,6 +31,8 @@ class EditFragment : Fragment() {
         // Obtener uid
         uid = auth.currentUser?.uid ?: ""
 
+        mostrarDatosUsuario()
+
         binding.actualizarDatos.setOnClickListener{
             actualizarDatosUsuario()
         }
@@ -42,6 +44,14 @@ class EditFragment : Fragment() {
         val nuevoUsuario = binding.actualizarUsuario.text.toString().trim()
         val nuevoNombre = binding.actualizarNombre.text.toString().trim()
 
+        // Verificar si los campos de usuario y nombre no están vacíos
+        if (nuevoUsuario.isEmpty() || nuevoNombre.isEmpty()) {
+            // Mostrar un mensaje de error si los campos están vacíos
+            showAlert("Por favor, ingresa un usuario y un nombre válidos")
+            return
+        }
+
+        // Si los campos no están vacíos, actualizar los datos del usuario
         val userData: MutableMap<String, Any> = hashMapOf(
             "usuario" to nuevoUsuario,
             "nombre" to nuevoNombre
@@ -55,6 +65,23 @@ class EditFragment : Fragment() {
             }
             .addOnFailureListener { e ->
                 Log.e("update","Algo salio mal")
+            }
+    }
+
+    private fun mostrarDatosUsuario() {
+        // Obtener la referencia al documento de usuario en Firestore
+        firestore.collection("users").document(uid).get()
+            .addOnSuccessListener { document ->
+                if (document != null && document.exists()) {
+                    // Obtener los datos del documento y mostrarlos en los EditText
+                    val usuario = document.getString("usuario")
+                    val nombre = document.getString("nombre")
+                    binding.actualizarUsuario.setText(usuario)
+                    binding.actualizarNombre.setText(nombre)
+                }
+            }
+            .addOnFailureListener { e ->
+                Log.e("mostrarDatosUsuario", "Error al obtener datos del usuario", e)
             }
     }
 
