@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BookBeakon</string>
+    <string name="app_name">BookBeacon</string>
     <string name="hint_usuario">Username</string>
     <string name="hint_password">Password</string>
     <string name="button_login">Login</string>
