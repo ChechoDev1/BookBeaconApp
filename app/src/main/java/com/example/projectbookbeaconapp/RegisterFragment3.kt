@@ -51,6 +51,10 @@ class RegisterFragment3 : Fragment() {
         // Agregar el callback al controlador de retroceso
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
+        binding.imgBackF.setOnClickListener {
+            findNavController().navigate(RegisterFragment3Directions.actionFourthFragmentToThirdFragment(correo = correo, nombre = nombre))
+        }
+
         // Manejar el evento de clic en el botón de registro
         binding.btBotonSiguiente6.setOnClickListener {
             // Obtener el email y la contraseña ingresados por el usuario
